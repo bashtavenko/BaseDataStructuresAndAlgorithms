@@ -59,7 +59,8 @@
     <Compile Include="Sorts\MaxPQ.cs" />
     <Compile Include="Sorts\MergeSort.cs" />
     <Compile Include="Sorts\SelectionSort.cs" />
-    <Compile Include="Sorts\Util.cs" />
+    <Compile Include="Sorts\ShellSort.cs" />
+    <Compile Include="Sorts\SortBase.cs" />
     <Compile Include="Strings\Anagrams.cs" />
     <Compile Include="Strings\IStringReversal.cs" />
     <Compile Include="Strings\Palindrome.cs" />

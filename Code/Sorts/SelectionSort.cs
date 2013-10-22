@@ -6,9 +6,9 @@ using Code;
 
 namespace Code.Sorts
 {
-    class SelectionSort
+    public class SelectionSort<T> : SortBase<T> where T : IComparable
     {
-        public void Sort (IComparable[] a)
+        public override void Sort (T[] a)
         {
             var n = a.Length;
             for (var i = 0; i < n; i++)
@@ -16,10 +16,10 @@ namespace Code.Sorts
                 var min = i;
                 for (var j = i + 1; j < n; j++)
                 {
-                    if (Util.Less(a[j], a[min]))
+                    if (Less(a[j], a[min]))
                         min = j;
                 }
-                Util.Exchange(a, i, min);
+                Exchange(a, i, min);
             }
         }
     }

@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Code.Sorts
 {
-    public class MergeSort<T> where T : IComparable
+    public class MergeSort<T> : SortBase<T> where T : IComparable
     {
         private static T[] _aux;
         
-        public static void Sort(T[] a)
+        public override void Sort(T[] a)
         {
             _aux = new T[a.Length];
             Sort(a, 0, a.Length - 1);
         }
 
-        private static void Sort(T[] a, int lo, int hi)
+        private void Sort(T[] a, int lo, int hi)
         {
             if (hi <= lo) return;
             int mid = lo + (hi - lo)/2;
@@ -34,7 +34,7 @@ namespace Code.Sorts
 
 
         // initial call: Merge(a, 0, 0, 1) - 2 car then Merge(a, 2, 2, 3) - 2 car, then 0 - 3
-        public static void Merge(T[] a, int lo, int mid, int hi)
+        public void Merge(T[] a, int lo, int mid, int hi)
         {
             // Merge a[lo..mid] with a[mid+1, hi]
             int i = lo, j = mid + 1;
@@ -48,7 +48,7 @@ namespace Code.Sorts
                     a[k] = _aux[j++];
                 else if (j > hi)
                     a[k] = _aux[i++];
-                else if (Util.Less(_aux[j], _aux[i]))
+                else if (Less(_aux[j], _aux[i]))
                     a[k] = _aux[j++]; // take from right
                 else
                     a[k] = _aux[i++];
