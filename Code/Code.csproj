@@ -54,6 +54,8 @@
     <Compile Include="NumbersEtc\Permutations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sorts\BinarySearch.cs" />
+    <Compile Include="Sorts\MergeBase.cs" />
+    <Compile Include="Sorts\MergeSortBottomUp.cs" />
     <Compile Include="Sorts\ElementarySort.cs" />
     <Compile Include="Sorts\InsertionSort.cs" />
     <Compile Include="Sorts\MaxPQ.cs" />
