@@ -53,6 +53,8 @@
     <Compile Include="NumbersEtc\Numbers.cs" />
     <Compile Include="NumbersEtc\Permutations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkipLists\SkipList.cs" />
+    <Compile Include="SkipLists\SkipListNode.cs" />
     <Compile Include="Sorts\BinarySearch.cs" />
     <Compile Include="Sorts\QuickSort.cs" />
     <Compile Include="Sorts\MergeBase.cs" />
@@ -72,9 +74,11 @@
     <Compile Include="Strings\StringReversalWithStack.cs" />
     <Compile Include="Strings\StringReversalWithWhile.cs" />
     <Compile Include="Strings\StringReversalWithWords.cs" />
+    <Compile Include="Strings\Trie.cs" />
     <Compile Include="Trees\Bst.cs" />
     <Compile Include="Trees\Node.cs" />
     <Compile Include="Trees\TreeTraversal.cs" />
+    <Compile Include="Trees\TreeUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -59,6 +59,8 @@
     <Compile Include="RecursionTest.cs" />
     <Compile Include="StringTest.cs" />
     <Compile Include="SortTests.cs" />
+    <Compile Include="TrieTest.cs" />
+    <Compile Include="TreeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Code\Code.csproj">
