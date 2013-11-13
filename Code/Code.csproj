@@ -76,6 +76,8 @@
     <Compile Include="Strings\StringReversalWithWords.cs" />
     <Compile Include="Strings\Trie.cs" />
     <Compile Include="Trees\Bst.cs" />
+    <Compile Include="Trees\Simple\BstFile.cs" />
+    <Compile Include="Trees\Simple\Node.cs" />
     <Compile Include="Trees\Node.cs" />
     <Compile Include="Trees\TreeTraversal.cs" />
     <Compile Include="Trees\TreeUtil.cs" />
