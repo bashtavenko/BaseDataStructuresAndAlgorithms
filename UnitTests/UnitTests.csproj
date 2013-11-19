@@ -62,6 +62,7 @@
     <Compile Include="TrieTest.cs" />
     <Compile Include="TreeTest.cs" />
     <Compile Include="BstFileTest.cs" />
+    <Compile Include="PeakFinderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Code\Code.csproj">
