@@ -15,5 +15,15 @@ namespace UnitTests
         {
             Assert.IsTrue(Palindrome.IsPalindrome("1234321".ToCharArray()));
         }
+
+        [TestMethod]
+        public void RemoveDupsTest()
+        {
+          char[] input = "abbefeg".ToCharArray();   
+          StringDuplicates.RemoveDuplicates(input);
+          var resultString = new string(input);
+          resultString = resultString.Substring(0, resultString.IndexOf('0'));
+          Assert.AreEqual("abefg", resultString); 
+        }
     }
 }

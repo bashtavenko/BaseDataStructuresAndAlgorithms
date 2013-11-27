@@ -20,15 +20,15 @@ namespace Code.Strings
                 int j;
                 for (j = 0; j < tail; ++j)
                 {
-                    if (str[i] == str[j]) break;
+                    if (str[j] == str[i]) break;
                 }
                 if (j == tail)
                 {
-                    str[tail] = str[i];
+                    str[j] = str[i];
                     ++tail;
                 }
             }
-            //str[tail] = '0';
+            str[tail] = '0';
         }
     }
 }
