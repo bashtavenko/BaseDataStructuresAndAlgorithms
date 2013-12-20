@@ -48,6 +48,7 @@
     <Compile Include="Graphs\Graph.cs" />
     <Compile Include="LinkedListsStacksAndQueues\LinkedList.cs" />
     <Compile Include="LinkedListsStacksAndQueues\Queues.cs" />
+    <Compile Include="LinkedListsStacksAndQueues\QueueWithOneStack.cs" />
     <Compile Include="LinkedListsStacksAndQueues\QueueWithTwoStacks.cs" />
     <Compile Include="LinkedListsStacksAndQueues\Stacks.cs" />
     <Compile Include="NumbersEtc\BitManipulation.cs" />
