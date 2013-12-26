@@ -7,12 +7,12 @@ using Code;
 namespace Code.Graphs
 {
     // This is for undirected graph
-    public class Cycle
+    public class CycleUndirected
     {
         private bool[] _marked;
         private bool _hasCycle;
 
-        public Cycle(Graph g)
+        public CycleUndirected(Graph g)
         {
             _marked = new bool[g.V];
             for (var s = 0; s < g.V; s++)

@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Graphs\BreadthFirstSearch.cs" />
     <Compile Include="Graphs\ConnectedComponents.cs" />
+    <Compile Include="Graphs\Digraph.cs" />
     <Compile Include="Graphs\Cycle.cs" />
     <Compile Include="Graphs\DepthFirstPath.cs" />
     <Compile Include="Graphs\DepthFirstSearch.cs" />
