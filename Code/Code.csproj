@@ -41,10 +41,13 @@
   <ItemGroup>
     <Compile Include="Graphs\BreadthFirstSearch.cs" />
     <Compile Include="Graphs\ConnectedComponents.cs" />
+    <Compile Include="Graphs\EdgeWeightedGraph.cs" />
+    <Compile Include="Graphs\CycleDirected.cs" />
     <Compile Include="Graphs\Digraph.cs" />
-    <Compile Include="Graphs\Cycle.cs" />
+    <Compile Include="Graphs\CycleUndirected.cs" />
     <Compile Include="Graphs\DepthFirstPath.cs" />
     <Compile Include="Graphs\DepthFirstSearch.cs" />
+    <Compile Include="Graphs\Edge.cs" />
     <Compile Include="Graphs\Friends.cs" />
     <Compile Include="Graphs\Graph.cs" />
     <Compile Include="LinkedListsStacksAndQueues\LinkedList.cs" />
@@ -62,6 +65,9 @@
     <Compile Include="SkipLists\SkipList.cs" />
     <Compile Include="SkipLists\SkipListNode.cs" />
     <Compile Include="Sorts\BinarySearch.cs" />
+    <Compile Include="Sorts\MinPQ.cs" />
+    <Compile Include="Sorts\Misc.cs" />
+    <Compile Include="Sorts\PQBase.cs" />
     <Compile Include="Sorts\QuickSort.cs" />
     <Compile Include="Sorts\MergeBase.cs" />
     <Compile Include="Sorts\MergeSortBottomUp.cs" />
