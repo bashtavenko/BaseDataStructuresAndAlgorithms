@@ -65,6 +65,7 @@
     <Compile Include="PeakFinderTest.cs" />
     <Compile Include="QueueWithStackTest.cs" />
     <Compile Include="MiscTest.cs" />
+    <Compile Include="PriorityQueuesTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Code\Code.csproj">

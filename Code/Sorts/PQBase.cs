@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Code.Sorts
 {
-    class PQBase<T>
+    public class PQBase<T> where T : IComparable<T>
     {
         public int Size { get { return _n; } }
         protected T[] _pq;
@@ -14,34 +14,8 @@ namespace Code.Sorts
         
         public PQBase(int maxN)
         {
-            _pq = new T[maxN+1];
+            _pq = new T[maxN+2];
             _n = 0;
-        }
-
-        protected void Swim(int k)
-        {
-            while (k > 1 && Less(k / 2, k))
-            {
-                Swap(k / 2, k);
-                k = k / 2;
-            }
-        }
-
-        protected void Sink(int k)
-        {
-            while (2 * k <= _n)
-            {
-                var j = 2 * k;
-                if (j < _n && Less(j, j + 1)) j++;
-                if (!Less(k, j)) break;
-                Swap(k, j);
-                k = j;
-            }
-        }
-
-        protected bool Less(int i, int j)
-        {
-            return i.CompareTo(j) < 0;
         }
 
         protected void Swap(int i, int j)
