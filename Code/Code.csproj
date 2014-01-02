@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Graphs\BreadthFirstSearch.cs" />
     <Compile Include="Graphs\ConnectedComponents.cs" />
+    <Compile Include="Graphs\EdgeWeightedDigraph.cs" />
+    <Compile Include="Graphs\DirectedEdge.cs" />
     <Compile Include="Graphs\EdgeWeightedGraph.cs" />
     <Compile Include="Graphs\CycleDirected.cs" />
     <Compile Include="Graphs\Digraph.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="LinkedListsStacksAndQueues\QueueWithTwoStacks.cs" />
     <Compile Include="LinkedListsStacksAndQueues\Stacks.cs" />
     <Compile Include="NumbersEtc\BitManipulation.cs" />
+    <Compile Include="NumbersEtc\Knapsack.cs" />
     <Compile Include="NumbersEtc\PeakFinder\IPeakFinder.cs" />
     <Compile Include="NumbersEtc\PeakFinder\PeakFinderLinear.cs" />
     <Compile Include="NumbersEtc\Numbers.cs" />
@@ -65,6 +68,7 @@
     <Compile Include="SkipLists\SkipList.cs" />
     <Compile Include="SkipLists\SkipListNode.cs" />
     <Compile Include="Sorts\BinarySearch.cs" />
+    <Compile Include="Sorts\IndexMinPQ.cs" />
     <Compile Include="Sorts\MinPQ.cs" />
     <Compile Include="Sorts\Misc.cs" />
     <Compile Include="Sorts\PQBase.cs" />

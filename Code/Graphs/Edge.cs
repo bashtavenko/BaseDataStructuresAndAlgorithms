@@ -35,7 +35,7 @@ namespace Code.Graphs
 
         public override string ToString()
         {
-            return string.Format("%d-%d %.2f", _v, _w, Weight);
+            return string.Format("{0}->{1} {3}", _v, _w, Weight);
         }
     }
 }
