@@ -30,5 +30,24 @@ namespace Code.Sorts
             }
             b[0] = a[0] > b[0] ? b[0] : a[0];
         }
+
+        public void SortArrayWithZerosAndOnes(int[] a)
+        {
+            int lo = 0;
+            int hi = a.Length;
+            int j = lo + 1;
+            for (var i = lo; i < hi; i++)
+            {
+                if (a[i] == 0) { Swap(a, i, j - 1); j++; }
+            }
+        }
+
+        private void Swap(int[] a, int i, int j)
+        {
+            var t = a[i];
+            a[i] = a[j];
+            a[j] = t;
+        }
+
     }
 }

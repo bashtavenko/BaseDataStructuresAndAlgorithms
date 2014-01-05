@@ -68,6 +68,7 @@
     <Compile Include="SkipLists\SkipList.cs" />
     <Compile Include="SkipLists\SkipListNode.cs" />
     <Compile Include="Sorts\BinarySearch.cs" />
+    <Compile Include="Sorts\QuickSort3Way.cs" />
     <Compile Include="Sorts\IndexMinPQ.cs" />
     <Compile Include="Sorts\MinPQ.cs" />
     <Compile Include="Sorts\Misc.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Strings\StringReversalWithStack.cs" />
     <Compile Include="Strings\StringReversalWithWhile.cs" />
     <Compile Include="Strings\StringReversalWithWords.cs" />
+    <Compile Include="Strings\SubstringSearch.cs" />
     <Compile Include="Strings\Trie.cs" />
     <Compile Include="Trees\Bst.cs" />
     <Compile Include="Trees\Simple\BstFile.cs" />

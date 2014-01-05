@@ -17,5 +17,30 @@ namespace UnitTests
             Misc.MergeTwoSortedArraysInPlace(a, b);
             CollectionAssert.AreEqual(correctResult, b);
         }
+
+        [TestMethod]
+        public void MiscTestSortArray()
+        {
+            var o = new Misc();
+            var x = new int[] { 0, 1, 1, 0, 1 };
+            var r = new int[] { 0, 0, 1, 1, 1 };
+            o.SortArrayWithZerosAndOnes(x);
+            CollectionAssert.AreEqual(x, r);
+
+            x = new int[] { 1, 1, 0, 1, 0 };
+            r = new int[] { 0, 0, 1, 1, 1 };
+            o.SortArrayWithZerosAndOnes(x);
+            CollectionAssert.AreEqual(x, r);
+
+            x = new int[] { 1, 1, 1, 0, 1 };
+            r = new int[] { 0, 1, 1, 1, 1 };
+            o.SortArrayWithZerosAndOnes(x);
+            CollectionAssert.AreEqual(x, r);
+
+            x = new int[] { 0, 0, 0, 1, 0 };
+            r = new int[] { 0, 0, 0, 0, 1 };
+            o.SortArrayWithZerosAndOnes(x);
+            CollectionAssert.AreEqual(x, r);
+        }
     }
 }
