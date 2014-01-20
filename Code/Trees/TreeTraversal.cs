@@ -19,7 +19,8 @@ namespace Code.Trees
                 TraversePreOrder(node.Right);
             }
         }
-
+        
+        // That's complicated
         public Node<K,V> CommonAccessor (Node<K,V> root, Node<K,V> n1, Node<K,V> n2 )
         {
             if (IsChild(root.Left, n1) && IsChild(root.Left, n2))
