@@ -38,6 +38,7 @@ namespace Code.Trees
                     IsSubtreeGreaterBruteForce(node.Right, key);
         }
 
+        // this is the right way to do it
         private static bool IsBstHelper(Node<K, V> node, K lo, K hi)
         {
             if (node == null) return true;

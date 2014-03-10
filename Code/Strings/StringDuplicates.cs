@@ -22,6 +22,7 @@ namespace Code.Strings
                 {
                     if (str[j] == str[i]) break;
                 }
+                // move tail only if no dups
                 if (j == tail)
                 {
                     str[j] = str[i];
