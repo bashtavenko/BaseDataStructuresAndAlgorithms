@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Graphs\BreadthFirstSearch.cs" />
     <Compile Include="Graphs\ConnectedComponents.cs" />
+    <Compile Include="Graphs\BfsDegreeOfSeparation.cs" />
     <Compile Include="Graphs\EdgeWeightedDigraph.cs" />
     <Compile Include="Graphs\DirectedEdge.cs" />
     <Compile Include="Graphs\EdgeWeightedGraph.cs" />
