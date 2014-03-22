@@ -25,6 +25,8 @@ namespace Code.Sorts
         public static int RankR(int[] a, int key)
         {
             return RankR(a, key, 0, a.Length - 1);
+
+            int i, j, m;
         }
 
         private static int RankR(int[] a, int key, int lo, int hi)
