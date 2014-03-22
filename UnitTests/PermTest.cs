@@ -16,5 +16,13 @@ namespace UnitTests
             var p = new Permutations();
             p.Run("ABC".ToCharArray());
         }
+
+      [TestMethod]
+      public void CombTestRun()
+      {
+        var c = new Combinations();
+        //c.Run();
+        c.Comb("", "abcde", 3);
+      }
     }
 }
