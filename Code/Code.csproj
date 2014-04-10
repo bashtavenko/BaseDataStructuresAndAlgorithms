@@ -86,6 +86,7 @@
     <Compile Include="Sorts\InsertionSort.cs" />
     <Compile Include="Sorts\MaxPQ.cs" />
     <Compile Include="Sorts\MergeSort.cs" />
+    <Compile Include="Sorts\RadixSorts.cs" />
     <Compile Include="Sorts\SelectionSort.cs" />
     <Compile Include="Sorts\ShellSort.cs" />
     <Compile Include="Sorts\SortBase.cs" />

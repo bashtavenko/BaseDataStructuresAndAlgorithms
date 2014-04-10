@@ -25,7 +25,7 @@ namespace Code.Graphs
         private void Bfs(Graph g, int s)
         {
             var queue = new Queue<int>();
-            for (int v = 0; v < g.V; g++) _distTo[v] = int.MaxValue;
+            for (int v = 0; v < g.V; v++) _distTo[v] = int.MaxValue;
             _marked[s] = true;
             _distTo[s] = 0;
             queue.Enqueue(s);
