@@ -71,6 +71,7 @@
     <Compile Include="MiscTest.cs" />
     <Compile Include="PriorityQueuesTest.cs" />
     <Compile Include="KnapsackTest.cs" />
+    <Compile Include="RadixSortsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Code\Code.csproj">
