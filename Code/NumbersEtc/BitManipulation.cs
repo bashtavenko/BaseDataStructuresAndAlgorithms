@@ -25,7 +25,7 @@ namespace Code.NumbersEtc
         {
             if (n < 0 || n > sizeof(ulong))
                 return;
-            _number = _number & ~((ulong) 1 << n);
+            _number = _number & ~((ulong) 1 << n); // Bitwise compliment
         }
 
         public bool Test(int n)

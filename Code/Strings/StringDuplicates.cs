@@ -14,7 +14,7 @@ namespace Code.Strings
             int len = str.Length;
             if (len < 2) return;
 
-            int tail = 1;
+            int tail = 1; // Invariant: there are no dups to the left of the tail
             for (int i = 1; i < len; ++i)
             {
                 int j;
@@ -22,7 +22,7 @@ namespace Code.Strings
                 {
                     if (str[j] == str[i]) break;
                 }
-                // move tail only if no dups
+                // move tail only if no dups (maintaining invariant)
                 if (j == tail)
                 {
                     str[j] = str[i];
