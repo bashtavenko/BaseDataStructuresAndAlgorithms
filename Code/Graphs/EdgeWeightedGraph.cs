@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Code.Graphs
 {
@@ -10,17 +7,17 @@ namespace Code.Graphs
     {
         public int V { get; private set; }
         public int E { get; private set; }
-        private List<Edge>[] _adj;
+        private HashSet<Edge>[] _adj;
 
         public EdgeWeightedGraph(int V)
         {
             this.V = V;
             E = 0;
 
-            _adj = new List<Edge>[V];
+            _adj = new HashSet<Edge>[V];
 
             for (var vertex = 0; vertex < V; vertex++)
-                _adj[vertex] = new List<Edge>();            
+                _adj[vertex] = new HashSet<Edge>();            
         }
 
         public void AddEdge(Edge e)
@@ -28,7 +25,6 @@ namespace Code.Graphs
             int v = e.Either;
             int w = e.GetOther(v);
 
-            // todo: may need to check dups
             _adj[v].Add(e);
             _adj[w].Add(e);
             

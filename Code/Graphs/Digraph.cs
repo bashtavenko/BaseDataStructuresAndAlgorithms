@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Code.Graphs
 {
@@ -10,29 +7,22 @@ namespace Code.Graphs
     {
         public int V { get; private set; }
         public int E { get; private set; }
-        private List<int>[] _adj;
+        private HashSet<int>[] _adj;
 
         public Digraph(int V)
         {
             this.V = V;
             E = 0;
 
-            _adj = new List<int>[V];
+            _adj = new HashSet<int>[V];
 
             for (var vertex = 0; vertex < V; vertex++)
-                _adj[vertex] = new List<int>();            
+                _adj[vertex] = new HashSet<int>();            
         }
 
         public void AddEdge(int v, int w)
         {
-            var list = _adj[v];
-            if (!list.Exists(s => s == w))
-                list.Add(w);
-
-            list = _adj[w];
-            if (!list.Exists(s => s == v))
-                list.Add(v);
-            
+            _adj[v].Add(w);                        
             E++;
         }
 
