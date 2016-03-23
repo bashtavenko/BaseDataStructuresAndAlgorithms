@@ -1,21 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Code.Strings
 {
-    public class Palindrome
+public class Palindrome
+{
+    public static bool IsPalindrome(char[] input)
     {
-        public static bool IsPalindrome(char[]input)
+        var i = 0;
+        var j = input.Length - 1;
+        while (i < j)
         {
-            var i = 0;
-            var j = input.Length - 1;
-            while (i < j)
-            {
-                if (input[i++] != input[j--]) return false;
-            }
-            return true;
+            if (input[i++] != input[j--]) return false;
         }
+        return true;
     }
+
+    public static bool IsPalindrome(int input)
+    {
+        var charBinaryArray = Convert.ToString(input, 2).ToCharArray();
+        return IsPalindrome(charBinaryArray);
+    }
+}
 }

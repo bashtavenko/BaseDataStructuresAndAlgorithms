@@ -62,6 +62,7 @@
     <Compile Include="LinkedListsStacksAndQueues\QueueWithOneStack.cs" />
     <Compile Include="LinkedListsStacksAndQueues\QueueWithTwoStacks.cs" />
     <Compile Include="LinkedListsStacksAndQueues\Stacks.cs" />
+    <Compile Include="NumbersEtc\BalancedBrackets.cs" />
     <Compile Include="NumbersEtc\BitManipulation.cs" />
     <Compile Include="NumbersEtc\Combinations.cs" />
     <Compile Include="NumbersEtc\Knapsack.cs" />
@@ -101,6 +102,8 @@
     <Compile Include="Strings\SubstringSearch.cs" />
     <Compile Include="Strings\Trie.cs" />
     <Compile Include="Trees\Bst.cs" />
+    <Compile Include="Trees\Simplest\SimplestBst.cs" />
+    <Compile Include="Trees\Simplest\Node.cs" />
     <Compile Include="Trees\Simple\BstFile.cs" />
     <Compile Include="Trees\Simple\Node.cs" />
     <Compile Include="Trees\Node.cs" />

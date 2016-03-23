@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.NumbersEtc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Code.Sorts;
 
@@ -41,6 +42,15 @@ namespace UnitTests
             r = new int[] { 0, 0, 0, 0, 1 };
             o.SortArrayWithZerosAndOnes(x);
             CollectionAssert.AreEqual(x, r);
+        }
+
+        [TestMethod]
+        public void BalancedBrackets()
+        {
+            var brackets = new BalancedBrackets();
+            Assert.IsTrue(brackets.IsBalanced("()"));
+            Assert.IsFalse(brackets.IsBalanced("("));
+            Assert.IsTrue(brackets.IsBalanced("([)]"));
         }
     }
 }

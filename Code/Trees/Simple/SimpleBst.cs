@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Code.Trees.Simple
+﻿namespace Code.Trees.Simple
 {
     public class SimpleBst
     {

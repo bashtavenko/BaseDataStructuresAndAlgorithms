@@ -1,8 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Code.Strings;
 
 namespace UnitTests
@@ -15,6 +11,14 @@ namespace UnitTests
         {
             Assert.IsTrue(Palindrome.IsPalindrome("1234321".ToCharArray()));
         }
+
+        [TestMethod]
+        public void IsBinaryPalindrome()
+        {
+            Assert.IsTrue(Palindrome.IsPalindrome(9));
+            Assert.IsFalse(Palindrome.IsPalindrome(10));
+        }
+
 
         [TestMethod]
         public void RemoveDupsTest()
