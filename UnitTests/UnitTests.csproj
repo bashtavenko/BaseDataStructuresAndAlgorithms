@@ -49,7 +49,9 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -66,13 +68,13 @@
     <Compile Include="SortTests.cs" />
     <Compile Include="TrieTest.cs" />
     <Compile Include="TreeTest.cs" />
-    <Compile Include="BstFileTest.cs" />
     <Compile Include="PeakFinderTest.cs" />
     <Compile Include="QueueWithStackTest.cs" />
     <Compile Include="MiscTest.cs" />
     <Compile Include="PriorityQueuesTest.cs" />
     <Compile Include="KnapsackTest.cs" />
     <Compile Include="RadixSortsTest.cs" />
+    <Compile Include="BstTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Code\Code.csproj">

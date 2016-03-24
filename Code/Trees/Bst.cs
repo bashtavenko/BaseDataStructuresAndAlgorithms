@@ -1,30 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Code.Trees
 {
-    public class Bst<K,V> where K : IComparable
+    public class Bst<TK,TV> where TK : IComparable
     {
-        private Node<K,V> _root;
+        private Node<TK,TV> _root;
 
-        public int Size { get { return GetSize(_root); } }
+        public int Size => GetSize(_root);
 
-        public V Get(K key)
+        public TV Get(TK key)
         {
             return Get(_root, key);
         }
 
-        public void Put(K key, V value)
+        public void Put(TK key, TV value)
         {
+            // Since we alway starts from the root, every time the root is returned. In an empty tree it would be a new root,
+            // in the existing it will be existing one.
             _root = Put(_root, key, value);
         }
                         
-        private V Get(Node<K, V> node, K key)
+        private TV Get(Node<TK, TV> node, TK key)
         {
-            if (node == null) return default(V);
+            if (node == null) return default(TV);
             var dif = key.CompareTo(node.Key);
             if (dif < 0)
                 return Get(node.Left, key);
@@ -34,9 +32,10 @@ namespace Code.Trees
                 return node.Value;            
         }
 
-        private Node<K,V> Put(Node<K,V> node, K key, V value)
+        private Node<TK,TV> Put(Node<TK,TV> node, TK key, TV value)
         {
-            if (node == null) return new Node<K, V>(key, value, 1);
+            // 1. Create root; 2. Create child node 
+            if (node == null) return new Node<TK, TV>(key, value, 1);
 
             int dif = key.CompareTo(node.Key);
             if (dif < 0)
@@ -50,9 +49,9 @@ namespace Code.Trees
             return node;            
         }
 
-        private int GetSize(Node<K,V> node)
+        private int GetSize(Node<TK,TV> node)
         {
-            return node == null ? 0 : node.SubNodesCount;
+            return node?.SubNodesCount ?? 0;
         }
     }
 }

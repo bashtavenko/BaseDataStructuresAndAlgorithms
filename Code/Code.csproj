@@ -104,10 +104,7 @@
     <Compile Include="Trees\Bst.cs" />
     <Compile Include="Trees\Simplest\SimplestBst.cs" />
     <Compile Include="Trees\Simplest\Node.cs" />
-    <Compile Include="Trees\Simple\BstFile.cs" />
-    <Compile Include="Trees\Simple\Node.cs" />
     <Compile Include="Trees\Node.cs" />
-    <Compile Include="Trees\Simple\SimpleBst.cs" />
     <Compile Include="Trees\TreeTraversal.cs" />
     <Compile Include="Trees\TreeUtil.cs" />
   </ItemGroup>

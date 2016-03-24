@@ -1,39 +1,93 @@
-﻿namespace Code.Trees.Simplest
+﻿using System;
+using System.IO;
+
+namespace Code.Trees.Simplest
 {
     public class SimplestBst
     {
-        public static Node Insert(Node node, int data)
+        private Node _root;
+
+        public void Insert(int value)
+        {
+            _root = Insert(_root, value);
+        }
+
+        public bool Exists(int value)
+        {
+            return Exists(_root, value);
+        }
+
+        public void SaveToFile(string filePath)
+        {
+            using (var sw = new StreamWriter(filePath))
+            {
+                SaveToFile(_root, sw);
+            }
+        }
+
+        public static SimplestBst LoadFromFile(string filePath)
+        {
+            var bstToReturn = new SimplestBst();
+
+            using (var sr = new StreamReader(filePath))
+            {
+                string nodeString;
+                while ((nodeString = sr.ReadLine()) != null)
+                {
+                    bstToReturn.Insert(Convert.ToInt32(nodeString));
+                }
+            }
+            return bstToReturn;
+        }
+
+        ///        20
+        ///   10         30
+        /// 8    12   25     40
+        /// 
+        /// 20, 10, 8, 12, 30, 25, 40 kind of like DFS 
+        private void SaveToFile(Node node, StreamWriter sw)
+        {
+            if (node != null)
+            {
+                // Pre-order traversal
+                sw.WriteLine(node.Value);
+                SaveToFile(node.Left, sw);
+                SaveToFile(node.Right, sw);
+            }
+        }
+
+        private Node Insert(Node node, int value)
         {
             if (node == null)
             {
-                return new Node(data);
+                return new Node(value);
             }
-            if (data < node.Data)
+            if (value < node.Value)
             {
-                node.Left = Insert(node.Left, data);
+                node.Left = Insert(node.Left, value);
             }
-            else if (data > node.Data)
+            else if (value > node.Value)
             {
-                node.Right = Insert(node.Right, data);
+                node.Right = Insert(node.Right, value);
             }
             else
             {
-                node.Data = data;
+                node.Value = value;
             }
             return node;
         }
 
-        public static bool Exists(Node root, int data)
+        private bool Exists(Node root, int data)
         {
             if (root == null)
             {
                 return false;
             }
-            if (data < root.Data)
+            if (data < root.Value)
             {
                 return Exists(root.Left, data);
             }
-            else if (data > root.Data)
+            else if (data > root.Value)
             {
                 return Exists(root.Right, data);
             }

@@ -2,26 +2,26 @@
 
 namespace Code.Trees
 {
-    public class Node<K, V> where K : IComparable
+    public class Node<TK, TV> where TK : IComparable
     {
-        public K Key { get; set; }
-        public V Value { get; set; }
-        public Node<K,V> Left { get; set; }
-        public Node<K, V> Right { get; set; }
+        public TK Key { get; set; }
+        public TV Value { get; set; }
+        public Node<TK,TV> Left { get; set; }
+        public Node<TK, TV> Right { get; set; }
         public int SubNodesCount { get; set; }
 
 
-        public Node(K key) 
-            :this(key, default(V))
+        public Node(TK key) 
+            :this(key, default(TV))
         {
         }
 
-        public Node(K key, V value)
+        public Node(TK key, TV value)
             : this(key, value, 0)
         {
         }
 
-        public Node(K key, V value, int subNodesCount)
+        public Node(TK key, TV value, int subNodesCount)
         {
             this.Key = key;            
             this.Value = value;

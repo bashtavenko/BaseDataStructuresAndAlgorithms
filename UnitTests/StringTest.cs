@@ -19,6 +19,24 @@ namespace UnitTests
             Assert.IsFalse(Palindrome.IsPalindrome(10));
         }
 
+        [TestMethod]
+        public void IsBinaryPalindrome2()
+        {
+            Assert.IsFalse(Palindrome.IsBinaryPalindrom(5));
+            //Assert.IsTrue(Palindrome.IsBinaryPalindromWithReversal(9));
+            Assert.IsFalse(Palindrome.IsDecimalPalindrom(5));
+            Assert.IsFalse(Palindrome.IsBinaryPalindrom(4562));
+            Assert.IsTrue(Palindrome.IsBinaryPalindrom(3));
+            Assert.IsFalse(Palindrome.IsBinaryPalindrom(4562));
+            Assert.IsTrue(Palindrome.IsBinaryPalindrom(3));
+            Assert.IsTrue(Palindrome.IsBinaryPalindrom(5));
+            Assert.IsTrue(Palindrome.IsBinaryPalindrom(9));
+            Assert.IsTrue(Palindrome.IsBinaryPalindrom(7));
+            Assert.IsTrue(Palindrome.IsBinaryPalindrom(33));
+            Assert.IsTrue(Palindrome.IsBinaryPalindrom(73737));
+            Assert.IsFalse(Palindrome.IsBinaryPalindrom(10));
+        }
+
 
         [TestMethod]
         public void RemoveDupsTest()

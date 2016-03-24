@@ -1,5 +1,4 @@
-﻿using System.IO;
-using Code.Trees.Simplest;
+﻿using Code.Trees.Simplest;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests
@@ -13,25 +12,40 @@ namespace UnitTests
         [TestInitialize]
         public void TestInit()
         {
-            _root = SimplestBst.Insert(null, 20);
-           SimplestBst.Insert(_root, 10);
-           SimplestBst.Insert(_root, 30);
-           SimplestBst.Insert(_root, 8);
-           SimplestBst.Insert(_root, 12);
-           SimplestBst.Insert(_root, 25);
-           SimplestBst.Insert(_root, 40);
+            _bst = new SimplestBst();
+            _bst.Insert(20);
+            _bst.Insert(10);
+            _bst.Insert(30);
+            _bst.Insert(8);
+            _bst.Insert(12);
+            _bst.Insert(25);
+            _bst.Insert(40);
         }
 
         [TestMethod]
         public void Exists()
         {
-            Assert.IsTrue (SimplestBst.Exists(_root, 20));
-            Assert.IsTrue (SimplestBst.Exists(_root, 10));
-            Assert.IsTrue (SimplestBst.Exists(_root, 30));
-            Assert.IsTrue (SimplestBst.Exists(_root, 8));
-            Assert.IsTrue (SimplestBst.Exists(_root, 12));
-            Assert.IsFalse(SimplestBst.Exists(_root, 42));
-            Assert.IsFalse(SimplestBst.Exists(null, 42));
+            Assert.IsTrue(_bst.Exists(20));
+            Assert.IsTrue(_bst.Exists(10));
+            Assert.IsTrue(_bst.Exists(30));
+            Assert.IsTrue(_bst.Exists(8));
+            Assert.IsTrue(_bst.Exists(12));
+            Assert.IsFalse(_bst.Exists(42));
+        }
+
+        [TestMethod]
+        public void SaveToFile()
+        {
+            const string fileName = "bst.txt";
+            _bst.SaveToFile(fileName);
+            SimplestBst newBst = SimplestBst.LoadFromFile(fileName);
+
+            Assert.IsTrue(_bst.Exists(20));
+            Assert.IsTrue(_bst.Exists(10));
+            Assert.IsTrue(_bst.Exists(30));
+            Assert.IsTrue(_bst.Exists(8));
+            Assert.IsTrue(_bst.Exists(12));
+            Assert.IsFalse(_bst.Exists(42));
         }
     }
 }
