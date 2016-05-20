@@ -1,25 +1,28 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿
+using System;
 using Code.Strings;
+using NUnit.Framework;
+
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class StringTest
     {
-        [TestMethod]
+        [Test]
         public void IsPalindrome()
         {
             Assert.IsTrue(Palindrome.IsPalindrome("1234321".ToCharArray()));
         }
 
-        [TestMethod]
+        [Test]
         public void IsBinaryPalindrome()
         {
             Assert.IsTrue(Palindrome.IsPalindrome(9));
             Assert.IsFalse(Palindrome.IsPalindrome(10));
         }
 
-        [TestMethod]
+        [Test]
         public void IsBinaryPalindrome2()
         {
             Assert.IsFalse(Palindrome.IsBinaryPalindrom(5));
@@ -38,17 +41,17 @@ namespace UnitTests
         }
 
 
-        [TestMethod]
+        [Test]
         public void RemoveDupsTest()
         {
-          char[] input = "abbefeg".ToCharArray();   
-          StringDuplicates.RemoveDuplicates(input);
-          var resultString = new string(input);
-          resultString = resultString.Substring(0, resultString.IndexOf('0'));
-          Assert.AreEqual("abefg", resultString); 
+            char[] input = "abbefeg".ToCharArray();
+            StringDuplicates.RemoveDuplicates(input);
+            var resultString = new string(input);
+            resultString = resultString.Substring(0, resultString.IndexOf('0'));
+            Assert.AreEqual("abefg", resultString);
         }
 
-        [TestMethod]
+        [Test]
         public void RemoveDupsTest2()
         {
             char[] input = "ttt".ToCharArray();
@@ -56,6 +59,20 @@ namespace UnitTests
             var resultString = new string(input);
             resultString = resultString.Substring(0, resultString.IndexOf('0'));
             Assert.AreEqual("t", resultString);
+        }
+
+        [Test]
+        public void StringReversalTest()
+        {
+            var sr = new StringReversalWithFor();
+            var result = sr.Reverse("abcdef".ToCharArray());
+            Assert.AreEqual(new string(result), "fedcba");
+        }
+
+        [TestCase("ABRA", "ABACADABRAC", 6)]
+        public void Substring(string pat, string text, int expected)
+        {
+            var result = SubstringSearch.BruteForce(pat, text);
         }
     }
 }

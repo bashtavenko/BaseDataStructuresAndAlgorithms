@@ -13,16 +13,15 @@ namespace Code.Strings
         //
         //
         //
-        
         public char[] Reverse(char[] input)
         {
             int length = input.Length;
-            for (int index = 0; index < length / 2; index++)
+            var j = length - 1;
+            for (var i = 0; i < length / 2; i++, j--)
             {
-                int endIndex = length - 1 - index;
-                char temp = input[index];
-                input[index] = input[endIndex];
-                input[endIndex] = temp;
+                char temp = input[i];
+                input[i] = input[j];
+                input[j] = temp;
             }
             return input;
         }

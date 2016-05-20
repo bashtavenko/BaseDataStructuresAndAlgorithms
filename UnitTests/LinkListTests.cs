@@ -35,23 +35,7 @@ namespace UnitTests
         // public void MyTestCleanup() { }
         //
         #endregion
-
-        [TestMethod]
-        public void TestReverseLinkedList()
-        {
-            var list = new Node<int>(1)
-                           {
-                               Next = new Node<int>(5)
-                                          {
-                                              Next = new Node<int>(7)
-                                          }
-
-                           };
-            //var result = MyLinkedList<int>.ReverseList(list);
-            var result2 = MyLinkedList<int>.ReverseListRec(list);
-
-        }
-
+            
         [TestMethod]
         public void TestQueue()
         {
@@ -75,11 +59,58 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestNthToLast()
+        public void DeleteNth()
         {
-            var list = new Node<int>(1) { Next = new Node<int>(2) { Next = new Node<int>(3) { Data = 3 } } };
-            var node = MyLinkedList<int>.FindNthToLast(list, 1);
+            var ll = new SimpleLinkedList();
+            var node = new Node {Data = 1, Next = new Node { Data = 2, Next = new Node { Data = 3 }}};
+        
+            // First node
+            node = new Node { Data = 1, Next = new Node { Data = 2, Next = new Node { Data = 3 } } };
+            var test = ll.DeleteNth(node, 0);
+            Assert.AreEqual(2, test.Data);
+
+            // Second node
+            node = new Node { Data = 1, Next = new Node { Data = 2, Next = new Node { Data = 3 } } };
+            test = ll.DeleteNth(node, 1);
+            var count = 0;
+            for (var n = test; n != null; n = n.Next, count++)
+            {
+            }
+            Assert.AreEqual(2, count);
         }
 
+        [TestMethod]
+        public void Reverse()
+        {
+            var ll = new SimpleLinkedList();
+            var node = new Node { Data = 1, Next = new Node { Data = 2, Next = new Node { Data = 3 } } };
+            var result = ll.ReverseIteratively(node);
+
+            var i = 0;
+            for (var n = result; n != null; n = n.Next, i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        Assert.AreEqual(3, n.Data);
+                        break;
+                    case 1:
+                        Assert.AreEqual(2, n.Data);
+                        break;
+                    case 2:
+                        Assert.AreEqual(1, n.Data);
+                        break;
+                }
+            }
+
+        }
+
+        [TestMethod]
+        public void Reverse2()
+        {
+            var ll = new SimpleLinkedList();
+            var node = new Node { Data = 1, Next = new Node { Data = 2, Next = new Node { Data = 3 } } };
+            var result = ll.ReverseRecursively(node);
+        }
     }
 }

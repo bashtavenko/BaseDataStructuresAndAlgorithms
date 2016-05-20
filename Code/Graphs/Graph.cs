@@ -16,6 +16,7 @@ namespace Code.Graphs
 
             _adj = new HashSet<int>[V];
 
+            // We must initialize the adjacency list
             for (var vertex = 0; vertex < V; vertex++)
                 _adj[vertex] = new HashSet<int>();            
         }

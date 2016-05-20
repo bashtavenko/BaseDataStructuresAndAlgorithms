@@ -11,7 +11,7 @@ namespace UnitTests
         public void TestComponents()
         {        
             int[,] a = {{0, 1, 1, 0}, {0, 1, 0, 1}, {0, 0, 0, 1}, {0, 0, 0,1}};
-            var c = new ConnectedComponents(a);
+            var c = new ConnectedComponentsPixels(a);
             c.FindComponents();
             var result = c.GetComponents();
         }

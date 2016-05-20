@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Code.Graphs
+﻿namespace Code.Graphs
 {
-    public class ConnectedComponents
+    public class ConnectedComponentsPixels
     {
         private int[] _dx = {1, 0, -1, 0};
         private int[] _dy = { 0, 1, 0, -1 };
@@ -15,7 +9,7 @@ namespace Code.Graphs
         private readonly int _colCount;
         private readonly int[,] _marked;
 
-        public ConnectedComponents(int[,] a)
+        public ConnectedComponentsPixels(int[,] a)
         {
             _a = a;
             _rowCount = _a.GetLength(1);

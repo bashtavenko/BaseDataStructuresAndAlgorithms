@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Code;
-
-namespace Code.Graphs
+﻿namespace Code.Graphs
 {
     // This is for undirected graph
     public class CycleUndirected
     {
-        private bool[] _marked;
+        private readonly bool[] _marked;
         private bool _hasCycle;
 
         public CycleUndirected(Graph g)
@@ -22,12 +16,8 @@ namespace Code.Graphs
             }
         }
 
-        public bool HasCycle
-        {
-            get { return _hasCycle; }
-        }
-
-
+        public bool HasCycle => _hasCycle;
+        
         private void Dfs (Graph g, int v, int u)
         {
             _marked[v] = true;
@@ -36,7 +26,7 @@ namespace Code.Graphs
                 if (!_marked[w])
                     Dfs(g, w, v);
                 else
-                    if (w != u) _hasCycle = true;
+                    if (w != u) _hasCycle = true; // Just to avoid hitting source vertext u == s
             }
         }
     }

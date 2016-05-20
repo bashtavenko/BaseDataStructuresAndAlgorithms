@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Code.LinkedListsStacksAndQueues
 {
@@ -82,8 +79,9 @@ namespace Code.LinkedListsStacksAndQueues
 
             // or
             var nodeTmp = _first;
-            while (nodeTmp.Next != null)
+            while (nodeTmp != null)
             {
+                Console.WriteLine(nodeTmp.Data);
                 nodeTmp = nodeTmp.Next;
             }
         }
@@ -127,61 +125,6 @@ namespace Code.LinkedListsStacksAndQueues
             }
 
             return previousNode;
-        }
-
-        public static Node<T> ReverseList(Node<T> l)
-        {
-            if (l == null) return null;
-            Node<T> previousNode = null;
-            Node<T> tmp = null;
-
-            while (l != null)
-            {
-                tmp = l.Next;
-                l.Next = previousNode;
-                previousNode = l;
-                l = tmp;
-            }
-            return previousNode;
-        }
-
-        public static Node<T> ReverseListRec(Node<T> l)
-        {
-            return ReverseList(l, null);
-        }
-
-        // doesn't work
-        private static Node<T> ReverseList(Node<T> l, Node<T> prev)
-        {
-            if (l.Next == null)
-            {
-                // Done
-                l.Next = prev;
-                return l;
-            }
-            else
-            {
-                Node<T> temp = ReverseList(l.Next, l);
-                l.Next = prev;
-                return temp;
-            }
-        }
-
-        public static Node<T> FindNthToLast(Node<T> node, int n)
-        {
-            var i = 0;
-            return FindNthToLast(node, n, ref i);
-        }
-
-        private static Node<T> FindNthToLast(Node<T> node, int n, ref int count)
-        {
-            if (node == null) return null; // reached end
-            var result = FindNthToLast(node.Next, n, ref count);
-            if (count == n)
-                result = node;
-
-            count++;
-            return result;
         }
     }
 }

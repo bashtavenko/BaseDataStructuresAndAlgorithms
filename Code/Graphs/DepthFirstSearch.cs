@@ -8,7 +8,7 @@ namespace Code.Graphs
 {
     public class DepthFirstSearch
     {
-        private bool[] _marked;
+        private readonly bool[] _marked;
         public int EdgeCount { get; private set; }
 
         public DepthFirstSearch(Graph g, int s)

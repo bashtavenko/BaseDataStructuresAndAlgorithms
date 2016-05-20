@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Code.Strings
+﻿namespace Code.Strings
 {
     public class SubstringSearch
     {
@@ -16,9 +10,9 @@ namespace Code.Strings
             for (int i = 0; i < n - m; i++)
             {
                 int j;
-                for (j = 0; j < m; j++)                
+                for (j = 0; j < m; j++) // Scan pattern
                     if (txt[i+j] != pat[j]) break;
-                if (j == m) return i;
+                if (j == m) return i; // Every character of pattern matches
             }
             return n;
         }

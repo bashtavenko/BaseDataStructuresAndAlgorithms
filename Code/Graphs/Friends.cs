@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Code.Graphs
 {
@@ -17,7 +15,7 @@ namespace Code.Graphs
 
     public class Finder
     {
-        private int _n;
+        private readonly int _n;
         public Finder(int n)
         {
             _n = n;

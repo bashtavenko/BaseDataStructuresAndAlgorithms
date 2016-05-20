@@ -25,12 +25,12 @@ namespace Code.NumbersEtc
         {
             if (n < 0 || n > sizeof(ulong))
                 return;
-            _number = _number & ~((ulong) 1 << n); // Bitwise compliment
+            _number = _number & ~((ulong) 1 << n); 
         }
 
         public bool Test(int n)
         {
-            return (_number & ((ulong) 1 << n)) == 1;
+            return (_number & ((ulong) 1 << n)) != 0;
         }
 
         public int Count ()

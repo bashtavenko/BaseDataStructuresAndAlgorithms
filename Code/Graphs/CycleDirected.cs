@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Code.Graphs
 {
     public class CycleDirected
     {
+        public bool HasCycle => _cycle != null;
 
-        public bool HasCycle { get { return _cycle != null; } }
-
-        private bool[] _marked;
+        private readonly bool[] _marked;
         private Stack<int> _cycle;
-        private bool[] _onStack;
-        private int[] _edgeTo;
+        private readonly bool[] _onStack;
+        private readonly int[] _edgeTo;
         
         public CycleDirected(Digraph g, int s)
         {
@@ -24,7 +19,8 @@ namespace Code.Graphs
 
             for (var v = 0; v < g.V; v++)
             {
-                if (!_marked[v]) Dfs(g, v);
+                if (!_marked[v])
+                    Dfs(g, v);
             }
         }
         
@@ -35,14 +31,22 @@ namespace Code.Graphs
                         
             foreach (var w in g.GetAdjList(v))
             {
-                if (HasCycle)
-                    return;
-                else if (!_marked[w])
+                if (!_marked[w])
                 {
                     _edgeTo[w] = v;
                     Dfs(g, w);
                 }
-                else if (_onStack[w])
+                // Similar to undirected, but the reason for having _onStack is that
+                // we need to distinguish cross-edges from back edges plus it gets reset on each Dfs call
+                // https://courses.csail.mit.edu/6.006/fall11/rec/rec14.pdf
+                // In digraph it is possible to come to already visited node but
+                // not have a cycle
+                // Example: 4 hit twice, 3 -> 4 is cross edge which is ok, no cycle here
+                // 1 -> 2 -> 4
+                // 1 -> 3 -> 4
+                // In contrast
+                // 1 -> 2 -> 3 -> 1 IS a cycle because 3 -> 1 is back edge
+                else if (_onStack[w]) 
                 {
                     _cycle = new Stack<int>();
                     for (var x = v; x != w; x = _edgeTo[x])
@@ -50,12 +54,10 @@ namespace Code.Graphs
 
                     _cycle.Push(w);
                     _cycle.Push(v);
+                    return;
                 }
             }
             _onStack[v] = false;
         }
-        
-
-
     }
 }

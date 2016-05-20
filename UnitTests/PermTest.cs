@@ -17,7 +17,14 @@ namespace UnitTests
             p.Run("ABC".ToCharArray());
         }
 
-      [TestMethod]
+        [TestMethod]
+        public void Perm2TestRun()
+        {
+            var p = new Permutations2();
+            var result = p.Permute("ABC");
+        }
+
+        [TestMethod]
       public void CombTestRun()
       {
         var c = new Combinations();

@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Code.Sorts;
 
+
 namespace UnitTests
 {
     [TestClass]
@@ -31,6 +32,21 @@ namespace UnitTests
             var s = new ShellSort<char>();
             s.Sort(_a);
             Assert.IsTrue(s.IsSorted(_a));
+        }
+
+        [TestMethod]
+        public void QuickSort()
+        {
+            var s = new QuickSort<char>();
+            s.Sort(_a);
+            Assert.IsTrue(s.IsSorted(_a));
+        }
+
+        [TestMethod]
+        public void BinarySearchTest()
+        {
+            var a = new int[] { 2, 3, 10, 15, 30, 40, 100, 120};
+            var result = BinarySearch.Rank(a, 4);
         }
     }
 }

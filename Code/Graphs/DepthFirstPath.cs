@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Code.Graphs
 {
     public class DepthFirstPath
     {   
         private bool[] _marked;
-        private int[] _edgeTo;
+        
+        // Last vertex of known path to this vertex
+        // Where we came from - _edge[2] = 0 means we came to 2 from 0
+        // It is a tree rooted at the source.
+        private int[] _edgeTo; 
+
         private int _s;
 
         public DepthFirstPath(Graph g, int s)

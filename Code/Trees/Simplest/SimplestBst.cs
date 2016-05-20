@@ -5,6 +5,8 @@ namespace Code.Trees.Simplest
 {
     public class SimplestBst
     {
+        public Node Root => _root;
+
         private Node _root;
 
         public void Insert(int value)

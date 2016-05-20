@@ -21,6 +21,9 @@ namespace UnitTests
         {
             var n = new Numbers();
             var i = n.Fib(3);
+
+            i = n.FibDynamic(5);
+            Assert.AreEqual(i, 5);
         }
     }
 }
