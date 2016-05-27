@@ -41,5 +41,17 @@ namespace UnitTests
             input = new int[] {1};
             Assert.AreEqual(1, Numbers.LonelyInteger(input));
         }
+
+        [TestCase("III", 3)]
+        [TestCase("IV", 4)]
+        [TestCase("IX", 9)]
+        [TestCase("XI", 11)]
+        [TestCase("CCCXCVII", 397)]
+        public void RomanNumbers(string input, int expected)
+        {
+            var converter = new RomanToArabicConverter();
+            var result = converter.Convert(input);
+            Assert.AreEqual(expected, result);
+        }
     }
 }

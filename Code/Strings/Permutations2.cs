@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Code.NumbersEtc
+namespace Code.Strings
 {
     public class Permutations2
     {

@@ -1,6 +1,8 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Code.Strings;
+using Code.Strings.Trivial;
 using NUnit.Framework;
 
 
@@ -74,5 +76,43 @@ namespace UnitTests
         {
             var result = SubstringSearch.BruteForce(pat, text);
         }
+
+        [TestCase("ABRA", "ABACADABRAC", 4)]
+        [TestCase("acbaed", "abcadf", 4)]
+        [TestCase("ACB", "ABC", 2)]
+        [TestCase("12341", "341213", 3)]
+        public void LongestCommonSubsequence(string a, string b, int expected)
+        {
+            var result = LongestCommonSubsequnece.FindExponential(a, b);
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void PowerSets()
+        {
+            var result = PowerSet.Generate("abc");
+
+            result = PowerSet.GenerateRecursive("abc");
+
+            var list = PowerSet.PowerSet2<string>(new List<string> {"a", "b", "c"});
+        }
+
+        [TestCase("abbbc", new string[] {"abbb", "bbbc"})]
+        [TestCase("deef", new string[] {"dee", "eef"})]
+        [TestCase("aaabbcccab", new string[] {"aaabb", "bbccc"})]
+        [TestCase("abbbccc", new string[] { "bbbccc"})]
+        [TestCase("aabbbcc", new string[] { "aabbb", "bbbcc"})]
+        public void LongestDistinct(string input, string[] expected)
+        {
+            var result = LongestSubstringWith2Distinct.FindLongestSubstringWith2DistinctBruteForce(input);
+            CollectionAssert.Contains(expected, result);
+        }
+
+        [Test]
+        public void GetAllSubstrings()
+        {
+            var result = AllSubstringsOfTheString.GenerateSubstrings("abc");
+        }
+
     }
 }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 
-namespace Code.NumbersEtc
+namespace Code.Strings
 {
     // http://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
     public class Permutations

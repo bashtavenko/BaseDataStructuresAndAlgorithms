@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Code.NumbersEtc.PeakFinder
+﻿namespace Code.NumbersEtc.PeakFinder
 {
   public class PeakFinderLinear : IPeakFinder
   {
+    // Find first peak (not neccessarily a maxium)
     public int Find(int[] a)
     {
       var length = a.Length;

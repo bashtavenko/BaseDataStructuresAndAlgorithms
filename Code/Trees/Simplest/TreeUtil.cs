@@ -1,19 +1,9 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Code.Trees.Simplest
 {
     public class TreeUtil
     {
-        public void TraverseInOrder(Node node)
-        {
-            if (node == null) return;
-
-            TraversePreOrder(node.Left);
-            Debug.WriteLine(node.Value);
-            TraversePreOrder(node.Right);
-        }
-
         // Create a copy of the tree
         public void TraversePreOrder(Node node)
         {
@@ -24,13 +14,22 @@ namespace Code.Trees.Simplest
             TraversePreOrder(node.Right);
         }
 
+        public void TraverseInOrder(Node node)
+        {
+            if (node == null) return;
+
+            TraverseInOrder(node.Left);
+            Debug.WriteLine(node.Value);
+            TraverseInOrder(node.Right);
+        }
+
         // Delete tree
         public void TraversePostOrder(Node node)
         {
             if (node == null) return;
 
-            TraversePreOrder(node.Left);
-            TraversePreOrder(node.Right);
+            TraversePostOrder(node.Left);
+            TraversePostOrder(node.Right);
             Debug.WriteLine(node.Value);
         }
         

@@ -118,25 +118,6 @@ namespace Code.NumbersEtc
             }
             return 0; // should never get here if there's at least one lonely
         }
-
-        public int CountOnes(int x)
-        {
-            var count = 0;
-            while (x > 0)
-            {
-                x = TurnOffRightMostBit(x);
-                count++;
-            }
-            return count;
-        }
-
-        // (7)      0111
-	    // (6)      0110
-        // x & (x-1) 0110    
-        private static int TurnOffRightMostBit(int x)
-        {
-            return x & (x - 1);
-        }
         
         public int SwapTheNumbersInPlace(int a, int b)
         {

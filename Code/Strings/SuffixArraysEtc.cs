@@ -2,7 +2,7 @@
 
 namespace Code.Strings
 {
-    public class Misc
+    public class SuffixArraysEtc
     {
         // That works in suffix array solution, meaning there is a SORTED array of all possible substrings
         // a c a a g c
