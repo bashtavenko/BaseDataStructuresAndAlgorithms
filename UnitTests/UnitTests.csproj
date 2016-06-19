@@ -60,7 +60,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ArraysEtcTests.cs" />
     <Compile Include="ComponentsTest.cs" />
+    <Compile Include="DijkstraSpTests.cs" />
     <Compile Include="FriendsTest.cs" />
     <Compile Include="GraphsTests.cs" />
     <Compile Include="LinkListTests.cs" />
@@ -69,7 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursionTest.cs" />
     <Compile Include="SimplestBstTests.cs" />
-    <Compile Include="StringTest.cs" />
+    <Compile Include="StringsTest.cs" />
     <Compile Include="SortTests.cs" />
     <Compile Include="TrieTest.cs" />
     <Compile Include="PeakFinderTest.cs" />

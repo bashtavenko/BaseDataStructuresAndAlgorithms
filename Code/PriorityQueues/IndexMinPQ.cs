@@ -1,23 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Code.Sorts
+namespace Code.PriorityQueues
 {    
-    public class IndexMinPQ<T>  where T : IComparable<T>
+    public class IndexMinPq<T>  where T : IComparable<T>
     {
         public bool IsEmpty { get { return _n == 0; } }
         public int Size { get { return _n; } }
         public int MinIndex { get { return _pq[1];}}
-        public T MinKey { get { return _keys[1]; } }
+        public T MinKey { get { return _keys[_pq[1]]; } }
         
         private int _n;
         private int[] _pq;
         private int[] _qp;
         private T[] _keys;
 
-        public IndexMinPQ(int maxN)            
+        public IndexMinPq(int maxN)            
         {
             _pq = new int[maxN + 2];
             _qp = new int[maxN + 2];
@@ -40,13 +37,12 @@ namespace Code.Sorts
 
         public int DelMin()
         {
-            int min = _pq[1];
-            Swap(1, _n);            
+            int indexOfMin = _pq[1];
+            Swap(1, _n--);            
             Sink(1);
-            _qp[min] = -1;
             _keys[_pq[_n + 1]] = default(T);
-            _pq[_n + 1] = -1;            
-            return min;
+            _qp[_pq[_n + 1]] = -1;            
+            return indexOfMin;
         }
 
         public bool Contains(int i)

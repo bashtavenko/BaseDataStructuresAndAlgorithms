@@ -19,5 +19,14 @@
             }
             return input;
         }
+
+        public char[] ReverseRecursively(char[] input, int i, int j)
+        {
+            if (i == input.Length / 2) return input;
+            char temp = input[i];
+            input[i] = input[j];
+            input[j] = temp;
+            return ReverseRecursively(input, ++i, --j);
+        }
     }
 }

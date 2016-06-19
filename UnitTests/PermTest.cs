@@ -1,9 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Code.NumbersEtc;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Code.Strings;
 
 namespace UnitTests
@@ -12,25 +7,17 @@ namespace UnitTests
     public class PermTest
     {
         [TestMethod]
-        public void PermTestRun()
+        public void PermWithBacktracking()
         {
-            var p = new Permutations();
+            var p = new PermutationsWithBacktracking();
             p.Run("ABC".ToCharArray());
         }
 
         [TestMethod]
-        public void Perm2TestRun()
+        public void Permutations()
         {
-            var p = new Permutations2();
-            var result = p.Permute("ABC");
+            var p = new Permutations();
+            var result = p.Run("ABC");
         }
-
-        [TestMethod]
-      public void CombTestRun()
-      {
-        var c = new Combinations();
-        //c.Run();
-        c.Comb("", "abcde", 3);
-      }
     }
 }

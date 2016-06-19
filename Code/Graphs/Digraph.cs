@@ -5,18 +5,18 @@ namespace Code.Graphs
 {
     public class Digraph
     {
-        public int V { get; private set; }
+        public int V { get; }
         public int E { get; private set; }
-        private HashSet<int>[] _adj;
+        private readonly HashSet<int>[] _adj;
 
-        public Digraph(int V)
+        public Digraph(int v)
         {
-            this.V = V;
+            this.V = v;
             E = 0;
 
-            _adj = new HashSet<int>[V];
+            _adj = new HashSet<int>[v];
 
-            for (var vertex = 0; vertex < V; vertex++)
+            for (var vertex = 0; vertex < v; vertex++)
                 _adj[vertex] = new HashSet<int>();            
         }
 

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Code.Sorts
+﻿namespace Code.Sorts
 {
-    internal class ElementarySort
+    internal class InsertionSortSimple
     {
         public void InsertSort(int[] a)
         {

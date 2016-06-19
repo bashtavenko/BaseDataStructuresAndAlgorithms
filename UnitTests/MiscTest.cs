@@ -1,14 +1,13 @@
-﻿using System;
-using Code.NumbersEtc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Code.NumbersEtc;
 using Code.Sorts;
+using NUnit.Framework;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class MiscTest
     {
-        [TestMethod]
+        [Test]
         public void MiscTestMergeTwoSortedArrays()
         {
             var a = new int[] { 2, 4, 7, 9 };
@@ -19,7 +18,7 @@ namespace UnitTests
             CollectionAssert.AreEqual(correctResult, b);
         }
 
-        [TestMethod]
+        [Test]
         public void MiscTestSortArray()
         {
             var o = new Misc();
@@ -44,13 +43,23 @@ namespace UnitTests
             CollectionAssert.AreEqual(x, r);
         }
 
-        [TestMethod]
+        [Test]
         public void BalancedBrackets()
         {
             var brackets = new BalancedBrackets();
             Assert.IsTrue(brackets.IsBalanced("()"));
             Assert.IsFalse(brackets.IsBalanced("("));
             Assert.IsTrue(brackets.IsBalanced("([)]"));
+        }
+
+        [TestCase("(,[,],),{,(,),}", true)]
+        [TestCase("[,(,),[,],{,(,),(,),},]", true)]
+        [TestCase("{,)", false)]
+        [TestCase("[,(,),[,],{,(,),(,)", false)]
+        public void WellFormedBrackets (string input, bool expected)
+        {
+            var brackets = new BalancedBrackets();
+            Assert.AreEqual(expected, brackets.IsWellFormed(input));
         }
     }
 }

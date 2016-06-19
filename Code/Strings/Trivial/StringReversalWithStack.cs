@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Code.Strings.Trivial
 {
@@ -11,8 +12,8 @@ namespace Code.Strings.Trivial
         //
         
         public char[] Reverse(char[] input)
-        {   
-            return new Stack<char>(input).ToArray();            
+        {
+            return new Stack<char>(input).ToArray();
         }
     }
 }

@@ -1,36 +1,37 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
 
 namespace Code.Strings
 {
-    // http://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
     public class Permutations
     {
-        public void Run(char[] a)
+        public List<string> Run (string s)
         {
-            Permute(a, 0, a.Length-1);
-        }
-
-        // ABC => ABC, ACB, BAC, BCA, CBA, CAB
-        private void Permute (char[]a, int i, int n)
-        {
-            if (i == n)
-                Debug.WriteLine(new string(a));
-            else
+            var permutations = new List<string>();
+            if (s == null) return null;
+            if (s.Length == 0)
             {
-                for (var j = i; j <= n; j++)
+                permutations.Add("");
+                return permutations;
+            }
+            char first = s[0];
+            string remainder = s.Substring(1);
+            List<string> combinations = Run(remainder);
+            foreach (var word in combinations)
+            {
+                for (int j = 0; j <= word.Length; j++)
                 {
-                    Swap(a, i, j);
-                    Permute(a, i+1, n);
-                    Swap(a, i, j);
+                    permutations.Add(InsertCharAt(word, first, j));
                 }
             }
+
+            return permutations;
         }
 
-        private void Swap (char[] a, int x, int y)
+        private string InsertCharAt(string word, char c, int i)
         {
-            var tmp = a[x];
-            a[x] = a[y];
-            a[y] = tmp;
+            var start = word.Substring(0, i);
+            var end = word.Substring(i);
+            return start + c + end;
         }
     }
 }

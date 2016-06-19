@@ -5,9 +5,9 @@ namespace Code.Graphs
 {
     public class BreadthFirstSearch
     {
-        private bool[] _marked;
-        private int[] _edgeTo;
-        private int _s;
+        private readonly bool[] _marked;
+        private readonly int[] _edgeTo;
+        private readonly int _s;
 
         public BreadthFirstSearch(Graph g, int s)
         {

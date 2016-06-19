@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Code.Sorts
 {
@@ -20,7 +16,7 @@ namespace Code.Sorts
             int mid = lo + (hi - lo)/2;
             Sort(a, lo, mid); // sort left half
             Sort(a, mid + 1, hi); // sort right half
-            Merge(a, lo, mid, hi);
+            Merge(a, lo, mid, hi); // Initial call: 0, 0, 1
         }        
     }
 }

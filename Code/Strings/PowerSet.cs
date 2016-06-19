@@ -34,38 +34,5 @@ namespace Code.Strings
             
             return result;
         }
-        
-        public static List<string> GenerateRecursive(string input)
-        {
-            if (!input.Any())
-            {
-                return new List<string>();
-            }
-            else
-            {
-                List<string> result = GenerateRecursive(input.Substring(1));
-                var s = new StringBuilder();
-                foreach (var ss in result)
-                {
-                    s.Append(input[0]);
-                }
-                result.Add(s.ToString());
-                return result;
-            }
-        }
-
-        public static IList<IList<T>> PowerSet2<T>(IList<T> list)
-        {
-            if (list.Count == 0)
-                return new List<IList<T>>(new[] { new List<T>() });
-            else
-            {
-                IList<IList<T>> ps = PowerSet2(list.Skip(1).ToArray());
-                foreach (List<T> ss in ps.ToArray())
-                    ps.Add(new List<T>(ss) { list.First() });
-                return ps;
-            }
-        }
-
     }
 }

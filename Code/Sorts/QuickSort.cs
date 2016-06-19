@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Code.Sorts
 {
@@ -32,12 +28,13 @@ namespace Code.Sorts
             T v = a[lo];
             while (true)
             {
-                while (Less(a[++i], v)) if (i == hi) break; // Find index of lowest
+                while (Less(a[++i], v)) if (i == hi) break; // Find first index of lowest
                 while (Less(v, a[--j])) if (j == lo) break; // .. and highest
-                if (i >= j) break;
-                Exchange(a, i, j);
+                // If we're here, some elements are out of place
+                if (i >= j) break; // Are we done?
+                Exchange(a, i, j); // Not yet
             }
-            Exchange(a, lo, j); // Indexes crossed
+            Exchange(a, lo, j); // Indexes crossed, final exchange
             return j; 
         }
     }

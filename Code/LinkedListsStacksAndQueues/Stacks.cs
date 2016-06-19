@@ -1,52 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
 
 namespace Code.LinkedListsStacksAndQueues
 {
-    class MyStack<T>
+    public class Stacks
     {
-        private Node<T> _first; // most recently added node
-        
-        public void Push(T item)
+        // 3,4,+,2,x,1,+ = (3+4) x 2 + 1
+        public static int EvaluateRpn(string exp)
         {
-            var newNode = new Node<T>(item);
-            newNode.Next = _first;
-            _first = newNode;
-        }
-        
-        public T Pop()
-        {
-            if (_first != null)
+            var stack = new Stack<int>();
+            var symbols = exp.Split(',');
+            foreach (var symbol in symbols)
             {
-                T item = _first.Data;
-                _first = _first.Next;
-                return item;
+                if (symbol.Length == 1 && "+-*/".Contains(symbol))
+                {
+                    // Must have x and y
+                    int x = stack.Pop();
+                    int y = stack.Pop();
+                    switch (symbol[0])
+                    {
+                        case '+':
+                            stack.Push(x + y);
+                        break;
+                        case '-':
+                            stack.Push(x - y);
+                            break;
+                        case '*':
+                            stack.Push(x * y);
+                            break;
+                        case '/':
+                            stack.Push(x / y);
+                            break;
+                        default:
+                            throw new ArgumentException();
+                    }
+                }
+                else
+                {
+                    // That's a number
+                    stack.Push(int.Parse(symbol));
+                }
             }
-            else
-                return default(T);
+
+            return stack.Pop(); // Nice!
         }
     }
-
-    public class StackSort
-    {
-        public static Stack<int> Sort(Stack<int> s)
-        {
-            var r = new Stack<int>();
-            while (s.Count > 0)
-            {
-                var tmp = s.Pop();
-                while (r.Count > 0 && r.Peek() > tmp)
-                    s.Push(r.Pop());
-                r.Push(tmp);
-            }
-            return r;
-        }
-    }
-
 }
-
-

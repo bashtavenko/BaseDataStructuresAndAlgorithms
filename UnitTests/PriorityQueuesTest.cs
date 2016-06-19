@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Code.Sorts;
 using System.Collections.Generic;
+using Code.PriorityQueues;
 
 namespace UnitTests
 {    
@@ -22,7 +22,7 @@ namespace UnitTests
         public void MaxPQTest()
         {
             const int size = 3;
-            var pq = new MaxPQ<Transition>(size);
+            var pq = new MaxPq<Transition>(size);
             foreach (var tran in _transitions)
             {
                 pq.Insert(tran);
@@ -41,7 +41,7 @@ namespace UnitTests
         public void MinPQTest()
         {
             const int size = 3;
-            var pq = new MinPQ<Transition>(size);
+            var pq = new MinPq<Transition>(size);
             foreach (var tran in _transitions)
             {
                 pq.Insert(tran);

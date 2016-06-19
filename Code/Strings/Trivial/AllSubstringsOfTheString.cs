@@ -12,7 +12,7 @@ namespace Code.Strings.Trivial
             var length = input.Length;
             for (int l = 1; l < length; l++)
             {
-                for (int s = 0; s <= length - l; s++)
+                for (int s = 0; s + l <= length; s++)
                 {
                     result.Add(input.Substring(s, l));
                 }

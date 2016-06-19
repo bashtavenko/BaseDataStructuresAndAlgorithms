@@ -53,5 +53,31 @@ namespace UnitTests
             var result = converter.Convert(input);
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void CountOnes()
+        {
+            Assert.That(BitManipulations.CountOnesCrudeWay(1), Is.EqualTo(1));
+            Assert.That(BitManipulations.CountOnesCrudeWay(7), Is.EqualTo(3));
+            Assert.That(BitManipulations.CountOnes(7), Is.EqualTo(3));
+            Assert.That(BitManipulations.CountOnes(6), Is.EqualTo(2));
+        }
+
+        [Test]
+        public void GetBinaryRepresentation()
+        {
+            var result = BitManipulations.GetBitsOfNumber(3);
+        }
+
+        [TestCase("A", 1)]
+        [TestCase("AA", 27)]
+        [TestCase("AB", 28)]
+        [TestCase("AAA", 27)]
+        [TestCase("AAAA", 18279)]
+        public void ConvertBase26(string input, int expected)
+        {
+            var result = Numbers.ConvertBase26ToInt(input);
+            Assert.AreEqual(expected, result);
+        }
     }
 }

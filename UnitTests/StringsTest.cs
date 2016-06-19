@@ -1,7 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using Code.Strings;
+﻿using Code.Strings;
 using Code.Strings.Trivial;
 using NUnit.Framework;
 
@@ -9,7 +6,7 @@ using NUnit.Framework;
 namespace UnitTests
 {
     [TestFixture]
-    public class StringTest
+    public class StringsTest
     {
         [Test]
         public void IsPalindrome()
@@ -69,6 +66,10 @@ namespace UnitTests
             var sr = new StringReversalWithFor();
             var result = sr.Reverse("abcdef".ToCharArray());
             Assert.AreEqual(new string(result), "fedcba");
+
+            var input = "abcdef".ToCharArray();
+            result = sr.ReverseRecursively(input, 0, input.Length - 1);
+            Assert.AreEqual(new string(result), "fedcba");
         }
 
         [TestCase("ABRA", "ABACADABRAC", 6)]
@@ -81,20 +82,26 @@ namespace UnitTests
         [TestCase("acbaed", "abcadf", 4)]
         [TestCase("ACB", "ABC", 2)]
         [TestCase("12341", "341213", 3)]
+        [TestCase("nematode", "empty", 3)]
         public void LongestCommonSubsequence(string a, string b, int expected)
         {
-            var result = LongestCommonSubsequnece.FindExponential(a, b);
+            var result = LongestCommonSubsequnece.FindLcsMaxLength(a, b);
             Assert.AreEqual(expected, result);
+        }
+
+        [TestCase("ACB", "ABC", 2)]
+        public void LongestCommonSubsequenceDynamic(string a, string b, int expected)
+        {
+            var lcs = new LongestCommonSubsequnece(a, b);
+            var result = lcs.Find();
+            //Assert.AreEqual(expected, result);
+            result = lcs.FindIterative();
         }
 
         [Test]
         public void PowerSets()
         {
             var result = PowerSet.Generate("abc");
-
-            result = PowerSet.GenerateRecursive("abc");
-
-            var list = PowerSet.PowerSet2<string>(new List<string> {"a", "b", "c"});
         }
 
         [TestCase("abbbc", new string[] {"abbb", "bbbc"})]
@@ -114,5 +121,18 @@ namespace UnitTests
             var result = AllSubstringsOfTheString.GenerateSubstrings("abc");
         }
 
+        [Test]
+        public void RunLengthEncode()
+        {
+            var result = RunLengthEncoding.Encode("aaaabcccaa");
+            Assert.AreEqual("4a1b3c2a", result);
+        }
+
+        [Test]
+        public void RunLengthDecode()
+        {
+            var result = RunLengthEncoding.Decode("4a1b3c2a");
+            Assert.AreEqual("aaaabcccaa", result);
+        }
     }
 }

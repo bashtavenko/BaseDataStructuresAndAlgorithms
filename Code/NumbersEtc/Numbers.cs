@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Code.NumbersEtc
 {
@@ -118,7 +115,8 @@ namespace Code.NumbersEtc
             }
             return 0; // should never get here if there's at least one lonely
         }
-        
+
+        // Because b - (b -a) = a
         public int SwapTheNumbersInPlace(int a, int b)
         {
             a = b - a;
@@ -137,6 +135,38 @@ namespace Code.NumbersEtc
                 a[i] = a[r];
                 a[r] = tmp;
             }
+        }
+
+        // 709 => {7, 0, 9} => 709
+        // 7*10^2 + 0*10^1 + 9*10^0
+        public static int BuildNumberFromDigiits(int[] digits)
+        {
+            int result = 0;
+            int length = digits.Length;
+            for (int i = 0; i < length; i++)
+            {
+                result += digits[length - 1 - i] * (int) Math.Pow(10, i);
+            }
+            return result;
+        }
+
+        public static int ConvertBase26ToInt(string input)
+        {
+            int ret = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                char ch = input[input.Length - 1 - i];
+                ret += (ch - 'A' + 1) * (int)Math.Pow(26, i);
+            }
+
+            // This is better since it doesn't need Math.Pow
+            ret = 0;
+            foreach (var ch in input)
+            {
+                ret = ret * 26 + ch - 'A' + 1;
+            }
+
+            return ret;
         }
     }
 }

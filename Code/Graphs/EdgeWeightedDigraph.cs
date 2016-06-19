@@ -7,7 +7,7 @@ namespace Code.Graphs
     {
         public int V { get; private set; }
         public int E { get; private set; }
-        private HashSet<DirectedEdge>[] _adj;
+        private readonly HashSet<DirectedEdge>[] _adj;
 
         public EdgeWeightedDigraph(int V)
         {
