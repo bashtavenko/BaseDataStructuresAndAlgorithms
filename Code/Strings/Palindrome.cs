@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Code.Strings
 {
     public class Palindrome
     {
+        // level => level
+        // rotator => rotator
         public static bool IsPalindrome(char[] input)
         {
             var i = 0;
@@ -12,6 +15,37 @@ namespace Code.Strings
             {
                 if (input[i++] != input[j--]) return false;
             }
+            return true;
+        }
+
+        // All characters should appear in pairs, except for strings of odd length
+        // edified => deified
+        // e:2, f:2, i:2, d:1
+        // all but one character should appear an even number of times
+        public static bool CanBePermutatedToPalindrome(string s)
+        {
+            var charFrequencies = new Dictionary<char, int>();
+            foreach (var ch in s)
+            {
+                if (charFrequencies.ContainsKey(ch))
+                {
+                    charFrequencies[ch]++;
+                }
+                else
+                {
+                    charFrequencies.Add(ch, 1);
+                }
+            }
+
+            var oddCount = 0;
+            foreach (var item in charFrequencies)
+            {
+                if ((item.Value % 2) != 0 && ++oddCount > 1)
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
 

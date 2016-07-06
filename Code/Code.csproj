@@ -60,6 +60,7 @@
     <Compile Include="Graphs\Friends.cs" />
     <Compile Include="Graphs\Graph.cs" />
     <Compile Include="LinkedListsStacksAndQueues\CircularQueue.cs" />
+    <Compile Include="LinkedListsStacksAndQueues\LruCache.cs" />
     <Compile Include="LinkedListsStacksAndQueues\Node.cs" />
     <Compile Include="LinkedListsStacksAndQueues\SimpleQueue.cs" />
     <Compile Include="LinkedListsStacksAndQueues\QueueWithOneStack.cs" />
@@ -67,15 +68,21 @@
     <Compile Include="LinkedListsStacksAndQueues\LinkedList.cs" />
     <Compile Include="LinkedListsStacksAndQueues\SimpleStack.cs" />
     <Compile Include="LinkedListsStacksAndQueues\Stacks.cs" />
+    <Compile Include="LinkedListsStacksAndQueues\TowerOfHanoi.cs" />
     <Compile Include="NumbersEtc\ArraysEtc.cs" />
     <Compile Include="NumbersEtc\BalancedBrackets.cs" />
     <Compile Include="NumbersEtc\BitManipulations.cs" />
     <Compile Include="NumbersEtc\Knapsack.cs" />
-    <Compile Include="NumbersEtc\PeakFinder\IPeakFinder.cs" />
-    <Compile Include="NumbersEtc\PeakFinder\PeakFinderLinear.cs" />
+    <Compile Include="NumbersEtc\Scores.cs" />
+    <Compile Include="NumbersEtc\Sums.cs" />
+    <Compile Include="NumbersEtc\TraverseArray.cs" />
+    <Compile Include="Sorts\KthLargestFinder.cs" />
+    <Compile Include="Sorts\PeakFinder\IPeakFinder.cs" />
+    <Compile Include="Sorts\PeakFinder\PeakFinderLinear.cs" />
     <Compile Include="NumbersEtc\Numbers.cs" />
-    <Compile Include="NumbersEtc\PeakFinder\PeakFinderLogN.cs" />
+    <Compile Include="Sorts\PeakFinder\PeakFinderLogN.cs" />
     <Compile Include="PriorityQueues\IndexMinPq.cs" />
+    <Compile Include="PriorityQueues\PriorityQueuesMisc.cs" />
     <Compile Include="Strings\LongestCommonSubsequnece.cs" />
     <Compile Include="Strings\LongestSubstringWith2Distinct.cs" />
     <Compile Include="Strings\PermutationsWithBacktracking.cs" />
@@ -102,6 +109,7 @@
     <Compile Include="Sorts\SortBase.cs" />
     <Compile Include="Strings\Anagrams.cs" />
     <Compile Include="Strings\RunLengthEncoding.cs" />
+    <Compile Include="Strings\StringDistance.cs" />
     <Compile Include="Strings\Trivial\AllSubstringsOfTheString.cs" />
     <Compile Include="Strings\Trivial\IStringReversal.cs" />
     <Compile Include="Strings\SuffixArraysEtc.cs" />
@@ -114,10 +122,13 @@
     <Compile Include="Strings\Trivial\StringReversalWithWords.cs" />
     <Compile Include="Strings\SubstringSearch.cs" />
     <Compile Include="Strings\Trie.cs" />
+    <Compile Include="Trees\Simplest\BinaryTreeUtil.cs" />
     <Compile Include="Trees\Bst.cs" />
+    <Compile Include="Trees\Simplest\BstChecker.cs" />
     <Compile Include="Trees\Simplest\SimplestBst.cs" />
     <Compile Include="Trees\Simplest\Node.cs" />
     <Compile Include="Trees\Node.cs" />
+    <Compile Include="Trees\Simplest\Traversals.cs" />
     <Compile Include="Trees\Simplest\TreeUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

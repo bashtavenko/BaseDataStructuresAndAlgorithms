@@ -1,4 +1,7 @@
-﻿using Code.NumbersEtc;
+﻿using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
+using Code.NumbersEtc;
 using NUnit.Framework;
 
 namespace UnitTests
@@ -78,6 +81,37 @@ namespace UnitTests
         {
             var result = Numbers.ConvertBase26ToInt(input);
             Assert.AreEqual(expected, result);
+        }
+
+        // Takes forever to run
+        //[Test]
+        public void MissingInt32()
+        {
+            int missing = 42;
+            var input = GenerateEnumerableWithOneMissing(missing);
+            var result = Numbers.FindMissingInt32(input);
+            Assert.AreEqual(missing, result);
+        }
+
+        private IEnumerable<uint> GenerateEnumerableWithOneMissing(int missing)
+        {
+            for (uint i = 0; i < uint.MaxValue; i++)
+            {
+                if (i != missing) yield return i;
+            }
+        }
+
+        [Test]
+        public void TestNumberOfWaysInArray()
+        {
+            var result = TraverseArray.CalcNumberOfWays(5, 5);
+        }
+
+        [Test]
+        public void CountNumberOfCoinsGreedy()
+        {
+            var result = Numbers.CountNumCoinsGreedy(40);
+            Assert.AreEqual(3, result); //25, 10, 15
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Code.Strings;
+﻿using System.Collections.Generic;
+using Code.Strings;
 using Code.Strings.Trivial;
 using NUnit.Framework;
 
@@ -13,6 +14,16 @@ namespace UnitTests
         {
             Assert.IsTrue(Palindrome.IsPalindrome("1234321".ToCharArray()));
         }
+
+        [TestCase("edified", true)]
+        [TestCase("ediied", false)]
+        [TestCase("level", true)]
+        [TestCase("rotator", true)]
+        public void IsPermutablePalindrome(string input, bool expected)
+        {
+            Assert.IsTrue(Palindrome.CanBePermutatedToPalindrome(input));
+        }
+
 
         [Test]
         public void IsBinaryPalindrome()
@@ -133,6 +144,53 @@ namespace UnitTests
         {
             var result = RunLengthEncoding.Decode("4a1b3c2a");
             Assert.AreEqual("aaaabcccaa", result);
+        }
+
+        [Test]
+        public void AnagramsTest()
+        {
+            var input = new List<string>
+            {
+                "debitcard",
+                "elvis",
+                "silent",
+                "badcredit",
+                "lives",
+                "freedom",
+                "listen",
+                "levis",
+                "money"
+            };
+
+            var expected = new List<List<string>>
+            {
+                new List<string>
+                {
+                    "debitcard",
+                    "badcredit"    
+                }, 
+                new List<string>
+                {
+                    "elvis",
+                    "lives",
+                    "levis"
+                },
+                new List<string>
+                {
+                    "silent",
+                    "listen"
+                }
+            };
+
+            var result = Anagrams.FindAnagrams(input);
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void StringDistanceTest()
+        {
+            int result = StringDistance.Compute("Carthorse", "Orchestra");
+            Assert.AreEqual(8, result); 
         }
     }
 }

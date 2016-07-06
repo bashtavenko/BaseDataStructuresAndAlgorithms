@@ -1,7 +1,13 @@
-﻿namespace Code.Strings
+﻿using System;
+using System.Collections.Generic;
+
+namespace Code.Strings
 {
     public class Anagrams
-    {        
+    {
+        // 1. Hashtable
+        // 2. Sorting
+        // 3. Add the whole strng into a hastable
         public static bool IsAnagram(string s1, string s2)
         {   
             if (s1.Length != s2.Length) return false;
@@ -34,5 +40,37 @@
 
             return false;
         }
+
+        // Anagrams should be the same if sorted
+        // sorted anagram -> many original strings
+        public static List<List<string>> FindAnagrams(List<string> input)
+        {
+            var hashTable = new Dictionary<string, List<string>>();
+            foreach (var str in input)
+            {
+                var sortedCharArray = str.ToCharArray();
+                Array.Sort(sortedCharArray);
+                var sortedStr = new String(sortedCharArray);
+                if (!hashTable.ContainsKey(sortedStr))
+                {
+                    hashTable.Add(sortedStr, new List<string> { str }); // Original string
+                }
+                else
+                {
+                    hashTable[sortedStr].Add(str); // New anagram
+                }
+            }
+
+            var result = new List<List<string>> ();
+            foreach (var entry in hashTable)
+            {
+                if (entry.Value.Count >= 2)
+                {
+                    result.Add(entry.Value);
+                }
+            }
+
+            return result;
+        } 
     }
 }

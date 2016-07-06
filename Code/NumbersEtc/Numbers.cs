@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Code.NumbersEtc
 {
@@ -49,8 +51,13 @@ namespace Code.NumbersEtc
             }
             return b;
         }
-        
 
+        // Greatest common divisor
+        public static long Gcd(long x, long y)
+        {
+            return y == 0 ? x : Gcd(y, x%y);
+        }
+        
         // 2 0 1
         // 2 1 2 = 2
         // 2 2 2*2 = 4
@@ -167,6 +174,69 @@ namespace Code.NumbersEtc
             }
 
             return ret;
+        }
+
+        // Don't quite work, but close
+        // Other way of finding missing number:
+        // 1. Sort (obvious)
+        // 2. Build array of all numbers (works only for short inputs)
+        // 3. Subtract sum sum of the numbers from ((n - 1) * n) / 2;
+        //    Example: 5,3,0,1,2  n = 6; 5*6 / 15 - (5+3+0+3+1+2) = 4. Works for duplicate as well
+        // 4. XOR
+        public static uint FindMissingInt32(IEnumerable<uint> input)
+        {
+            const int numBucket = 1 << 16;
+            var counter = new uint[numBucket];
+
+            // Build counter of 65536 buckets (MSBs)
+            // If 42 is missing, counter[0] = 65536, while counter[1] = 65536;
+            foreach (var number in input)
+            {
+                uint idx = number >> 16;
+                ++counter[idx];
+            }
+            
+            for (uint i = 0; i < counter.Length; i++)
+            {
+                if (counter[i] < numBucket)
+                {
+                    // Something is missing in this bucket, enumerate again
+                    var bitVec = new BitArray(numBucket);
+
+                    foreach (var number in input)
+                    {
+                        if (i == (number >> 16))
+                        {
+                            // That's our bucket
+                            bitVec.Set((int)((numBucket - 1) & number), true); // Get the lower 16 bits
+                        }
+                    }
+
+                    for (uint j = 0; j < (1 << 16); j++)
+                    {
+                        if (bitVec.Get((int)j))
+                        {
+                            return (i << 16) | j;
+                        }
+                    }
+
+                }
+            }
+            
+            return 0;
+        }
+
+        public static int CountNumCoinsGreedy(int cents)
+        {
+            var coins  = new int[] {100, 50, 25, 10, 5, 1};
+            int numCoins = 0;
+            for (int i = 0; i < coins.Length; i++)
+            {
+                numCoins += cents/coins[i];
+                cents %= coins[i];
+            }
+
+            return numCoins;
         }
     }
 }

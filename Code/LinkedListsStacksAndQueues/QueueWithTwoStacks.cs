@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Code.LinkedListsStacksAndQueues
 {
   public class QueueWithTwoStacks<T>
   {
-    private Stack<T> _inbound;
-    private Stack<T> _outbound;
+    private readonly Stack<T> _inbound;
+    private readonly Stack<T> _outbound;
 
     public QueueWithTwoStacks()
     {

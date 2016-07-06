@@ -1,55 +1,16 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
 
 namespace Code.Trees.Simplest
 {
     public class TreeUtil
     {
-        // Create a copy of the tree
-        public void TraversePreOrder(Node node)
-        {
-            if (node == null) return;
+        private Stack<Node> _nodes;
 
-            Debug.WriteLine(node.Value);
-            TraversePreOrder(node.Left);
-            TraversePreOrder(node.Right);
-        }
-
-        public void TraverseInOrder(Node node)
-        {
-            if (node == null) return;
-
-            TraverseInOrder(node.Left);
-            Debug.WriteLine(node.Value);
-            TraverseInOrder(node.Right);
-        }
-
-        // Delete tree
-        public void TraversePostOrder(Node node)
-        {
-            if (node == null) return;
-
-            TraversePostOrder(node.Left);
-            TraversePostOrder(node.Right);
-            Debug.WriteLine(node.Value);
-        }
-        
-        public bool IsBst(Node node)
-        {
-            return IsSubtreeLess(node.Left, node.Value) && IsSubtreeGreater(node.Right, node.Value);
-        }
-
-        private bool IsSubtreeLess(Node node, int value)
-        {
-            if (node == null) return true;
-            return node.Value < value && IsSubtreeLess(node.Left, value) && IsSubtreeLess(node.Right, value);
-        }
-
-        private bool IsSubtreeGreater(Node node, int value)
-        {
-            if (node == null) return true;
-            return node.Value > value && IsSubtreeGreater(node.Left, value) && IsSubtreeGreater(node.Right, value);
-        }
-
+        //  n1 n2 Result
+        //  <  >  Found
+        //  <  <  Go left
+        //  >  >  Go right
+        //  >  <  Outside
         public Node FindLcaInBst(Node node, int n1, int n2)
         {
             if (node == null) return null;
@@ -63,18 +24,85 @@ namespace Code.Trees.Simplest
                          // This also takes care of just two nodes scenario 1 -> 2
         }
 
-        public Node FindLcaInBinaryTree(Node node, int n1, int n2)
+        //  n1 n2 Result
+        //  <  >  Found
+        //  <  <  Go left
+        //  >  >  Go right
+        //  >  <  Outside
+        public Node FindLcaInBstIterative(Node root, int n1, int n2)
         {
-            if (node == null) return null;
-            if (n1 == node.Value || n2 == node.Value) return node; // Stop recursion
+            var node = root;
 
-            var left = FindLcaInBinaryTree(node.Left, n1, n2);
-            var right = FindLcaInBinaryTree(node.Right, n1, n2);
+            while (node.Value < n1 || node.Value > n2)
+            {
+                while (node.Value < n1) node = node.Right;
+                while (node.Value > n2) node = node.Left;
+            }
+            return node;
+        }
 
-            if (left != null && right != null)
-                return node; // n1 on one side and n2 on another
-            else
-                return left ?? right; // one or the other
+        public static Node FindFirstGreaterThan(Node root, int k)
+        {
+            Node result = null;
+            Node n = root;
+
+            while (n != null)
+            {
+                if (k < n.Value)
+                {
+                    result = n;
+                    n = n.Left;
+                }
+                else
+                {
+                    n = n.Right;
+                }
+            }
+
+            return result;
+        }
+
+        public Node FindKthLargestInOrder(Node root, int k)
+        {
+            _nodes = new Stack<Node>();
+            TraverseInOrder(root);
+            Node result = null;
+
+            for (;k > 0; k--)
+            {
+                result = _nodes.Count > 0 ? _nodes.Pop() : null;
+            }
+
+            return result;
+        }
+
+        private void TraverseInOrder(Node n)
+        {
+            if (n == null) return;
+            TraverseInOrder(n.Left);
+            _nodes.Push(n);
+            TraverseInOrder(n.Right);
+        }
+
+        public Node FindKthLargestReverseInOrder(Node root, int k)
+        {
+            int order = 0;
+            Node result = null;
+            TraverseReverseInOrder(root, ref order, k, ref result);
+            return result;
+        }
+        
+        // Alternative to these messy parameters can be return a class with order and result
+        private void TraverseReverseInOrder(Node n, ref int order, int k, ref Node result)
+        {
+            if (n == null) return;
+            TraverseReverseInOrder(n.Right, ref order, k, ref result);
+            order++;
+            if (k == order)
+            {
+                result = n;
+            }
+            TraverseReverseInOrder(n.Left, ref order, k, ref result);
         }
     }
 }

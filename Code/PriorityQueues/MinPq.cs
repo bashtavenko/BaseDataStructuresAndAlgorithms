@@ -23,5 +23,27 @@ namespace Code.PriorityQueues
             Pq[N + 1] = default(T);            
             return min;
         }
+
+        private void Swim(int k)
+        {
+            while (k > 1 && Greater(k / 2, k))
+            {
+                Swap(k / 2, k);
+                k = k / 2;
+            }
+        }
+
+        private void Sink(int k)
+        {
+            while (2 * k <= N)
+            {
+                var j = 2 * k;
+                if (j < N && Greater(j, j + 1)) j++;
+                if (!Greater(k, j)) break;
+                Swap(k, j);
+                k = j;
+            }
+        }
+
     }
 }

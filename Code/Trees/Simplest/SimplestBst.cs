@@ -74,7 +74,7 @@ namespace Code.Trees.Simplest
             }
             else
             {
-                node.Value = value;
+                // We're not supposed to update BST
             }
             return node;
         }
@@ -85,18 +85,13 @@ namespace Code.Trees.Simplest
             {
                 return false;
             }
-            if (data < root.Value)
-            {
-                return Exists(root.Left, data);
-            }
-            else if (data > root.Value)
-            {
-                return Exists(root.Right, data);
-            }
-            else
+
+            if (data == root.Value)
             {
                 return true;
             }
+
+            return data < root.Value ? Exists(root.Left, data) : Exists(root.Right, data);
         }
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Code.LinkedListsStacksAndQueues
 {
+    // This is not circular buffer but rather a queue backed by array
+    // as opposed to linked list
     public class CircularQueue
     {
         public int Size { get; private set; }

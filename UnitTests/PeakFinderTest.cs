@@ -1,5 +1,5 @@
 ﻿using System;
-using Code.NumbersEtc.PeakFinder;
+using Code.Sorts.PeakFinder;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests

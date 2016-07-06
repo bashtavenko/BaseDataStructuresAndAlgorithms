@@ -1,4 +1,4 @@
-﻿namespace Code.NumbersEtc.PeakFinder
+﻿namespace Code.Sorts.PeakFinder
 {
   public class PeakFinderLinear : IPeakFinder
   {

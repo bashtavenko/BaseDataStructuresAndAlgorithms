@@ -8,6 +8,7 @@ namespace Code.NumbersEtc
         private readonly char[] _leftBrackets = new char[] {'[', '(', '{'};
         private readonly char[] _rightBrackets = new char[] {']', ')', '}'};
 
+        // Crude way of checking the number of brackets, ignores the order
         public bool IsBalanced(string input)
         {
             int count = 0;

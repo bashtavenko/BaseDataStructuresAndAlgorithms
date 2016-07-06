@@ -1,14 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using Code.PriorityQueues;
+using NUnit.Framework;
 
 namespace UnitTests
 {    
-    [TestClass]
+    [TestFixture]
     public class PriorityQueuesTest
     {
-        private List<Transition> _transitions = new List<Transition>
+        private readonly List<Transition> _transitions = new List<Transition>
         {
             new Transition{ Src = "Home", Dst= "About", Frequency = 10},
             new Transition{ Src = "Home", Dst= "Products", Frequency = 2},
@@ -18,7 +18,7 @@ namespace UnitTests
             new Transition{ Src = "Service", Dst= "Home", Frequency = 25},
         };
         
-        [TestMethod]
+        [Test]
         public void MaxPQTest()
         {
             const int size = 3;
@@ -37,8 +37,8 @@ namespace UnitTests
             }
         }
 
-        [TestMethod]
-        public void MinPQTest()
+        [Test]
+        public void MinPqTest()
         {
             const int size = 3;
             var pq = new MinPq<Transition>(size);
@@ -54,6 +54,35 @@ namespace UnitTests
             {
                 stack.Push(pq.DelMin());
             }
+        }
+
+        [Test]
+        public void MergeSortedArrays()
+        {
+            var input = new List<int>[]
+            {
+                new List<int> {3, 5, 7},
+                new List<int> {0, 6},
+                new List<int> {0, 6, 28},
+            };
+
+            var expected = new List<int> {0, 0, 3, 5, 6, 6, 7, 28};
+            var result = PriorityQueuesMisc.MergeSortedArrays(input);
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void RawPriorityQueueTest()
+        {
+            var pq = new MinPq<int>(10);
+            pq.Insert(5);
+            pq.Insert(1);
+            pq.Insert(9);
+            pq.Insert(7);
+
+            var min = pq.DelMin();
+
+            Assert.AreEqual(1, min);
         }
     }
 

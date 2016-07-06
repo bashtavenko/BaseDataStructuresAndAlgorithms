@@ -1,4 +1,6 @@
-﻿namespace Code.Sorts
+﻿using System.Collections.Generic;
+
+namespace Code.Sorts
 {
     public class Misc
     {
@@ -43,5 +45,58 @@
             a[j] = t;
         }
 
+        // Input: two sorted arrays which may contain duplicates
+        // Output: intersection
+        // Example: 2,3,3,5,5,6,7,7,8,12  5,5,6,8,8,9,10,10  5,6,8
+        public static List<int> IntersectTwoArraysBruteForce(int[] a, int[] b)
+        {
+            var intesection = new List<int>();
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (i == 0 || a[i] != a[i - 1]) // because there can be dups
+                {
+                    // We can replace this with binary search Array.BinarySearch
+                    foreach (var i1 in b)
+                    {
+                        if (a[i] == i1)
+                        {
+                            intesection.Add(a[i]);
+                            break; // Don't want duplicates from b
+                        }
+                    }
+                }
+            }
+
+            return intesection;
+        }
+
+        // Nice!
+        // Example: 2,3,3,5,7,11  3,3,7,15,31  3,7
+        public static List<int> IntersectTwoArrays(int[] a, int[] b)
+        {
+            var intesection = new List<int>();
+
+            int i = 0, j = 0;
+            while (i < a.Length && j < b.Length)
+            {
+                // Continue on both as long as they match and no duplicate
+                if (a[i] == b[j] && (i == 0 || a[i] != a[i - 1]))
+                {
+                    intesection.Add(a[i]);
+                    ++i;
+                    ++j;
+                }
+                else if (a[i] < b[j])
+                {
+                    ++i;
+                }
+                else
+                {
+                    ++j;
+                }
+
+            }
+            return intesection;
+        }
     }
 }

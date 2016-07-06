@@ -25,8 +25,8 @@
             {
                 if (!_marked[w])
                     Dfs(g, w, v);
-                else
-                    if (w != u) _hasCycle = true; // Just to avoid hitting source vertext u == s
+                else if (w != u) // Just to avoid hitting source vertext u == s
+                    _hasCycle = true; 
             }
         }
     }

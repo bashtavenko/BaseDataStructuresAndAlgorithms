@@ -23,5 +23,27 @@ namespace Code.PriorityQueues
             Sink(1);
             return max;
         }
+
+        private void Swim(int k)
+        {
+            while (k > 1 && Less(k / 2, k))
+            {
+                Swap(k / 2, k);
+                k = k / 2;
+            }
+        }
+
+        private void Sink(int k)
+        {
+            while (2 * k <= N)
+            {
+                var j = 2 * k;
+                if (j < N && Less(j, j + 1)) j++;
+                if (!Less(k, j)) break;
+                Swap(k, j);
+                k = j;
+            }
+        }
+
     }
 }
