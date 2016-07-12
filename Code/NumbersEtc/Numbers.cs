@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Code.NumbersEtc
 {
@@ -146,13 +147,27 @@ namespace Code.NumbersEtc
 
         // 709 => {7, 0, 9} => 709
         // 7*10^2 + 0*10^1 + 9*10^0
-        public static int BuildNumberFromDigiits(int[] digits)
+        public static int BuildNumberFromDigits(int[] digits)
         {
             int result = 0;
             int length = digits.Length;
             for (int i = 0; i < length; i++)
             {
                 result += digits[length - 1 - i] * (int) Math.Pow(10, i);
+            }
+            return result;
+        }
+
+        // 314
+        // 0: 3
+        // 1: 3 * 10 + 1 = 30 + 1 = 31
+        // 2: 31 * 10 + 4 = 310 + 4 = 314
+        public static int BuildNumberFromDigitsNeatWay(int[] digits)
+        {
+            int result = 0;
+            for (int i = 0; i < digits.Length; i++)
+            {
+                result = result * 10 + digits[i];
             }
             return result;
         }
@@ -237,6 +252,89 @@ namespace Code.NumbersEtc
             }
 
             return numCoins;
+        }
+
+        // divide by 10
+        public static string IntToString(int x)
+        {
+            var sb = new StringBuilder();
+            while (x > 0)
+            {
+                sb.Append('0' + x%10); // + 0 to string
+                x /= 10;
+            }
+
+            // Kluge way of reversing string
+            return new Stack<char>(sb.ToString()).ToString();
+        }
+
+        public static int StringToInt(string s)
+        {
+            int result = 0;
+            foreach (var ch in s)
+            {
+                int digit = ch - '0'; // - '0' to int
+                // Normally we would start from LSD 3 * 10^2 + 1 * 10^1 + 4 * 10^0, but requires power
+                // We could start from MSD
+                result = result*10 + digit;
+            }
+            return result;
+        }
+
+
+        public static List<int> GeneratePrimesTrialDivision(int n)
+        {
+            var result = new List<int>();
+
+            for (int i = 2; i < n; i++)
+            {
+                var isPrime = true;
+                // No point of checking higher than square root
+                for (int j = 2; j <= Math.Sqrt(i); j++)
+                {
+                    if (i%j == 0) 
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime)
+                {
+                    result.Add(i);
+                }
+            }
+
+            return result;
+        }
+
+        // If we added prime 3, then 6,9,12.. won't be primes
+        public static List<int> GeneratePrimesWithSieving(int n)
+        {
+            var result = new List<int>();
+            var primes = new bool[n + 1];
+            for (int i = 0; i < primes.Length; i++)
+            {
+                primes[i] = true;
+            }
+
+            primes[0] = false;
+            primes[1] = false;
+            
+            for (int p = 2; p <= n; p++)
+            {
+                if (primes[p])
+                {
+                    result.Add(p);
+                    // Sieve its multiples, meaning if we add p = 3,
+                    // we remove 6, 9, 12 and so on
+                    for (int j = p; j <= n; j += p)
+                    {
+                        primes[j] = false;
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

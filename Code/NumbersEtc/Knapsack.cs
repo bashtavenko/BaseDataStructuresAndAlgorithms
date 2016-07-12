@@ -5,22 +5,23 @@ namespace Code.NumbersEtc
 {
     public class Knapsack
     {
-        public int Run(int w, List<Item> items)
+        public int Run(int weight, List<Item> items)
         {
-            return Run(w, items, items.Count);
+            return Run(weight, items, items.Count);
         }
 
-        private int Run(int w, List<Item> items, int n)
+        // Returns value
+        private int Run(int weight, List<Item> items, int n)
         {
-            if (n == 0 || w == 0)
+            if (n == 0 || weight == 0)
                 return 0;
 
-            if (items[n - 1].Weight > w)
-                return Run(w, items, n - 1);
+            if (items[n - 1].Weight > weight)
+                return Run(weight, items, n - 1);
             else
             {
-                var included = items[n - 1].Value + Run(w - items[n - 1].Weight, items, n - 1);
-                var notIncluded = Run(w, items, n - 1);
+                var included = items[n - 1].Value + Run(weight - items[n - 1].Weight, items, n - 1);
+                var notIncluded = Run(weight, items, n - 1);
                 return Math.Max(included, notIncluded);
             }
         }

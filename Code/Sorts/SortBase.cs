@@ -62,7 +62,7 @@ namespace Code.Sorts
         }
 
         // Nothing to the left is LESS, nothing to the right is GREATER
-        // Similar than with two pointers, but simpler
+        // Similar to the two pointers version, but simpler, run one pointer left to right
         protected int ReversePartitioning(T[] a, int lo, int hi, int startingPivot)
         {
             T pivotValue = a[startingPivot];
@@ -79,7 +79,6 @@ namespace Code.Sorts
             Exchange(a, hi, newPivot); // Restore pivot value
             return newPivot;
         }
-
 
         protected int Partition(T[] a, int lo, int hi)
         {

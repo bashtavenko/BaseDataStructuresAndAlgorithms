@@ -24,6 +24,11 @@ namespace Code.PriorityQueues
             return min;
         }
 
+        public T Peek()
+        {
+            return Pq[1];
+        }
+
         private void Swim(int k)
         {
             while (k > 1 && Greater(k / 2, k))

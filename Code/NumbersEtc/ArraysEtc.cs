@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Code.NumbersEtc
 {
@@ -29,6 +30,31 @@ namespace Code.NumbersEtc
             }
 
             return max;
+        }
+
+        public static int GetMaxDifTwice(int[] input)
+        {
+            int maxTotal = 0;
+            var min = int.MaxValue;
+            var first = new List<int>();
+            
+            // Forward
+            for (int i = 0; i < input.Length; i++)
+            {
+                min = Math.Min(min, input[i]);
+                maxTotal = Math.Max(maxTotal, input[i] - min);
+                first.Add(maxTotal);
+            }
+
+            // Backward
+            int max = int.MinValue;
+            for (int i = input.Length - 1; i > 0; i--)
+            {
+                max = Math.Max(max, input[i]);
+                maxTotal = Math.Max(maxTotal, max - input[i] + first[i - 1]);
+            }
+
+            return maxTotal;
         }
 
         // Find maximum sum over all subarrays and return this sum

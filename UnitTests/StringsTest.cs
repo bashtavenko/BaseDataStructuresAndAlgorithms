@@ -35,9 +35,10 @@ namespace UnitTests
         [Test]
         public void IsBinaryPalindrome2()
         {
-            Assert.IsFalse(Palindrome.IsBinaryPalindrom(5));
+            Assert.IsTrue(Palindrome.IsBinaryPalindrom(5));
             //Assert.IsTrue(Palindrome.IsBinaryPalindromWithReversal(9));
-            Assert.IsFalse(Palindrome.IsDecimalPalindrom(5));
+            Assert.IsTrue(Palindrome.IsDecimalPalindrom(5));
+            Assert.IsTrue(Palindrome.IsDecimalPalindrom(303));
             Assert.IsFalse(Palindrome.IsBinaryPalindrom(4562));
             Assert.IsTrue(Palindrome.IsBinaryPalindrom(3));
             Assert.IsFalse(Palindrome.IsBinaryPalindrom(4562));
@@ -50,6 +51,26 @@ namespace UnitTests
             Assert.IsFalse(Palindrome.IsBinaryPalindrom(10));
         }
 
+        [TestCase(7, true)]
+        [TestCase(1, true)]
+        [TestCase(11, true)]
+        [TestCase(121, true)]
+        [TestCase(333, true)]
+        [TestCase(2147447412, true)]
+        [TestCase(12, false)]
+        [TestCase(12, false)]
+        [TestCase(100, false)]
+        public void IsDecimalPalindromeWithoutRever(int x, bool expected)
+        {
+            Assert.AreEqual(expected, Palindrome.IsDecimalPalindromWithoutReverse(x));
+        }
+
+        [TestCase(1132, 2311)]
+        [TestCase(3, 3)]
+        public void ReverseNumber(int x, int expected)
+        {
+            Assert.AreEqual(expected, Palindrome.ReverseDigitsOfTheNumber(x));
+        }
 
         [Test]
         public void RemoveDupsTest()

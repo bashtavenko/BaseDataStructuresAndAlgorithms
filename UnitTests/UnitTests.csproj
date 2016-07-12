@@ -67,7 +67,7 @@
     <Compile Include="GraphsTests.cs" />
     <Compile Include="LinkListTests.cs" />
     <Compile Include="LruCacheTests.cs" />
-    <Compile Include="NumTest.cs" />
+    <Compile Include="BitsAndNumbersTests.cs" />
     <Compile Include="PermTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursionTests.cs" />

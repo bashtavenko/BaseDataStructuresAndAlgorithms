@@ -2,8 +2,8 @@
 {
     public class ConnectedComponentsPixels
     {
-        private int[] _dx = {1, 0, -1, 0};
-        private int[] _dy = { 0, 1, 0, -1 };
+        private readonly int[] _dx = {1, 0, -1, 0};
+        private readonly int[] _dy = { 0, 1, 0, -1 };
         private readonly int[,] _a;
         private readonly int _rowCount;
         private readonly int _colCount;

@@ -1,12 +1,11 @@
-﻿using System;
-
-namespace Code.NumbersEtc
+﻿namespace Code.NumbersEtc
 {
     public class BitManipulations
     {
         // Bits are different 0-0=0 / 0-1=1 / 1-0=1/1-1=0
         // 1. XOR to itself is 0
         // 2. XOR to 0 is itself
+        // 3. XOR with 1 flips the bit
         public int NumberXor(int x, int y)
         {
             return x ^ y;
@@ -92,6 +91,9 @@ namespace Code.NumbersEtc
                 numberOfBits++;
             }
 
+            // Alternative of finding number of bits:
+            //numberOfBits = (int) Math.Floor(Math.Log(x, 2)) + 1;
+
             // Now we can allocate array with that size
             var result = new bool[numberOfBits];
             
@@ -101,6 +103,35 @@ namespace Code.NumbersEtc
                 x >>= 1;
             }
             return result;
+        }
+
+        public static int CheckParity(long x)
+        {
+            int result = 0;
+
+            //for (; x != 0; x &=(x -1))
+            // would be even better
+            for (;x != 0; x >>= 1)
+            {
+                // This is very neat - every ones flips 1 to 0 and back. Essentially x % 2
+                // 0 - 1 - 0 - 1 - 0 - 0
+                result ^=  (int)((x & 1));
+            }
+
+            return result;
+        }
+
+        public int SwapBits(int x, int i, int j)
+        {
+            // No point of doing anything if bits are the same
+            if (((x >> i) & 1) != ((x >> j) & 1))
+            {
+                // XOR with 1 flips the bit
+                int bitMask = (1 << i) | (1 << j); // These are two bits we're swapping
+                x ^= bitMask;
+            }
+
+            return x;
         }
     }
 }

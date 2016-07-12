@@ -69,18 +69,53 @@ namespace Code.Strings
             return r == n;
         }
 
-        // Works only for multiple digit numbers
-        public static bool IsDecimalPalindrom(uint n)
+        // Works with numbers, not bits (303 => yes)
+        public static bool IsDecimalPalindrom(uint x)
         {
             // Digit reverse
-            uint reverse = 0;
-            uint tmp = n;
-            while (tmp > 0)
+            uint result = 0;
+            uint remaining = x;
+            while (remaining > 0)
             {
-                reverse = reverse * 10 + tmp % 10;
-                tmp /= 10;
+                result = result * 10 + remaining % 10;
+                remaining /= 10;
             }
-            return reverse == n;
+            return result == x;
+        }
+
+        public static bool IsDecimalPalindromWithoutReverse(int x)
+        {
+            int numDigits = (int) (Math.Floor(Math.Log10(x))) + 1;
+            int msdMask = (int) Math.Pow(10, numDigits - 1);
+            if (x / msdMask != x % 10)
+            {
+                return false;
+            }
+            x %= msdMask;   // chop off msd
+            x /= 10;        // chop off lsd 
+            msdMask /= 10;  // next mask
+
+            return true;
+        }
+
+        // 1132 => 2311
+        // 1132 % 10 = 2   0 * 10 + 2 = 2
+        // 113 % 10 = 3    2 * 10 + 3 = 23
+        // 11 % 10 = 1     23 * 10 + 1 = 231
+        // 1 % 10 = 1      231 * 10 + 1 = 2311
+        public static int ReverseDigitsOfTheNumber(int x)
+        {
+            var isNegative = x < 0;
+            int result = 0;
+
+            int remaining = Math.Abs(x);
+            while (remaining > 0)
+            {
+                result = result*10 + remaining%10;
+                remaining /= 10;
+            }
+
+            return isNegative ? -result : result;
         }
     }
 }

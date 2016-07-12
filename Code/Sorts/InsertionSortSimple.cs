@@ -4,6 +4,8 @@
     {
         public void InsertSort(int[] a)
         {
+            // Entries to the right have not been seen yet.
+            // Rearrange (order) left portion.
             for (var i = 0; i < a.Length; i++)
             {
                 var k = i;

@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Code.PriorityQueues;
 using NUnit.Framework;
 
 namespace UnitTests
-{    
+{
     [TestFixture]
     public class PriorityQueuesTest
     {
         private readonly List<Transition> _transitions = new List<Transition>
         {
-            new Transition{ Src = "Home", Dst= "About", Frequency = 10},
-            new Transition{ Src = "Home", Dst= "Products", Frequency = 2},
-            new Transition{ Src = "Products", Dst= "Details", Frequency = 1},
-            new Transition{ Src = "Home", Dst= "Search", Frequency = 200},
-            new Transition{ Src = "Home", Dst= "Services", Frequency = 3},
-            new Transition{ Src = "Service", Dst= "Home", Frequency = 25},
+            new Transition {Src = "Home", Dst = "About", Frequency = 10},
+            new Transition {Src = "Home", Dst = "Products", Frequency = 2},
+            new Transition {Src = "Products", Dst = "Details", Frequency = 1},
+            new Transition {Src = "Home", Dst = "Search", Frequency = 200},
+            new Transition {Src = "Home", Dst = "Services", Frequency = 3},
+            new Transition {Src = "Service", Dst = "Home", Frequency = 25},
         };
-        
+
         [Test]
         public void MaxPQTest()
         {
@@ -83,6 +84,14 @@ namespace UnitTests
             var min = pq.DelMin();
 
             Assert.AreEqual(1, min);
+        }
+
+        [TestCase(new int[] {3, 0, 2, 10, 12, 20, 9, 50, 3}, 2, new int[] {0, 2})]
+        [TestCase(new int[] {3, 0, 2, 10, 12, 20, 9, 50, 3}, 3, new int[] {0, 2, 3})]
+        public void FindKSmallestFromStream(int[] input, int k, int[] expected)
+        {
+            var result = PriorityQueuesMisc.FindKSmallestFromStream(input.AsEnumerable(), k);
+            CollectionAssert.AreEquivalent(expected, result);
         }
     }
 

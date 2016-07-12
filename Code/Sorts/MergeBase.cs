@@ -33,9 +33,9 @@ namespace Code.Sorts
                 else if (j > hi)      // Right exhaused, take from left 
                     a[k] = _aux[i++];
                 else if (Less(_aux[j], _aux[i])) // Here's the compare
-                    a[k] = _aux[j++]; // take from right, inrcement pointer
+                    a[k] = _aux[j++]; // take from right and keep taking from right
                 else
-                    a[k] = _aux[i++]; // take from left, increment pointer
+                    a[k] = _aux[i++]; // take from left and keep taking from left
             }
         }
     }

@@ -147,6 +147,39 @@ namespace UnitTests
             Assert.AreEqual(expected, result);
         }
 
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 1, 5)]
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 2, 4)]
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 3, 3)]
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 10, -1)]
+        public void FindKthLargestWithMaxHeap(int[] input, int k, int expected)
+        {
+            var finder = new KthLargestFinder();
+            int result = finder.FindKthLargestWithMaxHeap(input, k);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 1, 5)]
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 2, 4)]
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 3, 3)]
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 10, -1)]
+        public void FindKthLargestWithMinHeap(int[] input, int k, int expected)
+        {
+            var finder = new KthLargestFinder();
+            int result = finder.FindKthLargestWithMinHeap(input, k);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 1, 5)]
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 2, 4)]
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 3, 3)]
+        [TestCase(new int[] { 3, 2, 1, 5, 4 }, 10, -1)]
+        public void FindKthLargestWithMinHeapDeadSimple(int[] input, int k, int expected)
+        {
+            var finder = new KthLargestFinder();
+            int result = finder.FindKthLargestWithMinHeapDeadSimple(input, k);
+            Assert.AreEqual(expected, result);
+        }
+
         [Test]
         public void FindArrayIntersectionBruteForce()
         {

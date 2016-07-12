@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Code.PriorityQueues
 {
@@ -21,6 +22,10 @@ namespace Code.PriorityQueues
 
             var result = new List<int>();
             ArrayEntry headEntry;
+
+            // The whole point of having PQ here is to find minium element and its index efficiently, that is O(lg(n)) as opposed to O(n)
+            // If we were to merge two arrays, it could simply be if. If number of arrays > 2, we would need linear search twice
+            // once to find minimum element and second to find index it came from.
             while ((headEntry = pq.DelMin()) != null)                       // That does the trick 
             {
                 result.Add(headEntry.Value);
@@ -33,6 +38,24 @@ namespace Code.PriorityQueues
                 }
             }
             return result;
+        }
+
+        // That's it - quick and easy
+        public static List<int> FindKSmallestFromStream(IEnumerable<int> input, int k)
+        {
+            var pq = new MaxPq<int>(k);
+
+            foreach (var i in input)
+            {
+                pq.Insert(i);
+
+                if (pq.Size == k + 1)
+                {
+                    pq.DelMax();
+                }
+            }
+            
+            return pq.Items.ToList();
         }
     }
 

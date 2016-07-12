@@ -1,13 +1,14 @@
 ﻿using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Code.NumbersEtc;
 using NUnit.Framework;
 
 namespace UnitTests
 {
     [TestFixture()]
-    public class NumTest
+    public class BitsAndNumbersTests
     {
         [Test]
         public void FibTest()
@@ -112,6 +113,36 @@ namespace UnitTests
         {
             var result = Numbers.CountNumCoinsGreedy(40);
             Assert.AreEqual(3, result); //25, 10, 15
+        }
+
+        [TestCase(11, 1)]
+        [TestCase(3, 0)]
+        public void CheckParity(int x, int expected)
+        {
+            Assert.AreEqual(expected, BitManipulations.CheckParity(x));
+        }
+
+        [TestCase(18, new int[] {2, 3, 5, 7, 11, 13, 17})]
+        public void GeneratePrimes(int n, int[] expected)
+        {
+            var result = Numbers.GeneratePrimesTrialDivision(n);
+            CollectionAssert.AreEqual(expected, result);
+
+            result = Numbers.GeneratePrimesWithSieving(n);
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        // 709 => {7, 0, 9} => 709
+        // 7*10^2 + 0*10^1 + 9*10^0
+        [TestCase(new int[] {7, 0, 9}, 709)]
+        [TestCase(new int[] { 3, 1, 4 }, 314)]
+        public void BuildNumberFromDigiits(int[] digits, int expected)
+        {
+            var result = Numbers.BuildNumberFromDigits(digits);
+            Assert.AreEqual(expected, result);
+
+            result = Numbers.BuildNumberFromDigitsNeatWay(digits);
+            Assert.AreEqual(expected, result);
         }
     }
 }

@@ -1,9 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Code.PriorityQueues
 {
     public class MaxPq<T> : PqBase<T> where T : IComparable<T>
     {
+        public IEnumerable<T> Items
+        {
+            get
+            {
+                for (int i = 1; i <= N; i++)
+                {
+                    yield return Pq[i];
+                }
+            }
+        }
+
         public MaxPq(int maxN)
             : base(maxN)
         {
@@ -22,6 +34,11 @@ namespace Code.PriorityQueues
             Pq[N + 1] = default(T);
             Sink(1);
             return max;
+        }
+
+        public T Peek()
+        {
+            return Pq[1];
         }
 
         private void Swim(int k)
